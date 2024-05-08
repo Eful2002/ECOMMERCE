@@ -1,0 +1,8 @@
+﻿@using Ecommerce.Models.ViewModel
+@model List<HienThiDanhMucHSX>
+<div>
+    @foreach (var item in Model)
+    {
+        <li><a href="~/Customers/Home/DienThoaiTheoDanhMuc?mahangsx=@item.iMaHangSX">@item.sTenHangSX</a></li>
+    }
+</div>

@@ -1,0 +1,140 @@
+﻿@model Ecommerce.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="title-block">
+    <h1 class="title"> Xóa Sản Phẩm </h1>
+</div>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HangSanXuat.TenHangSX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HangSanXuat.TenHangSX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh.HinhAnh1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh.HinhAnh1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiSanPham.TenLoaiSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiSanPham.TenLoaiSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSanPham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhBia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhBia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManHinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManHinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CPU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Camera_Truoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Camera_Truoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Camera_Sau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Camera_Sau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeDieuHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeDieuHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuayPhim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuayPhim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGianBaoHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGianBaoHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongTinThemVeSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongTinThemVeSP)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary-outline">Xóa</button>  <a href="~/Admin/Home/Index" class="btn btn-danger-outline">Trở Về</a>
+            </div>
+        </div>
+    }
+</div>

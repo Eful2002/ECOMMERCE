@@ -1,0 +1,252 @@
+﻿@using Ecommerce.Models
+@model SanPham
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Areas/Customers/Views/Shared/_LayoutDetails.cshtml";
+}
+
+@{
+    IEnumerable<ChiTietSP> CTSP_MauSac = ViewBag.MauSac as IEnumerable<ChiTietSP>;
+}
+<!-- #region chisnh -->
+<div class="product_details">
+    <div class="row">
+        <div class="col-lg-5 col-md-6">
+            <div class="product-details-tab">
+
+
+
+
+                <div id="img-1" class="zoomWrapper single-zoom">
+                    <a href="#">
+                        <img id="zoom1" src="/Assets/Customers/img/HinhAnhSanPham/@Model.AnhBia" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.AnhBia" alt="big-1" height:auto width:auto />
+                    </a>
+                </div>
+                <div class="single-zoom-thumb">
+                    <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                        <li>
+                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1">
+                                <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1" alt="zo-th-1" />
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2">
+                                <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2" alt="zo-th-1" />
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3">
+                                <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3" alt="zo-th-1" />
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4">
+                                <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4" alt="zo-th-1" />
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-6">
+            <div class="product_d_right">
+                <div action="#">
+
+                    <h3>@Model.TenSanPham</h3>
+                    <div class="product_desc" style="border-bottom: 0px; padding-bottom: 0px;margin-bottom:5px">
+                        <span>Hãng Sản Xuất: @Model.HangSanXuat.TenHangSX</span> <br />
+                        <span>Loại Sản Phẩm: @Model.LoaiSanPham.TenLoaiSP</span>
+                    </div>
+                    <!-- #region Display Kho -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a id="octagon" class="" role="button" data-bs-toggle="collapse" href="#faq-collapse1" aria-expanded="true" aria-controls="faq-collapse1"> <span class="button-faq"></span>Kho</a>
+                            </h5>
+                        </div>
+                        <div id="faq-collapse1" class="collapse show" aria-expanded="true" role="tabpanel" data-parent="#faq-five">
+                            <div class="panel-body">
+                                @foreach (var item in CTSP_MauSac)
+                                {
+                                    <p>Màu: @item.MauSac.TenMauSac,  Bản:@item.Rom/@item.Ram, Giá Bán: @string.Format("{0:0,0}", item.GiaBan) vnđ, SL: @item.SoLuong sp</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+
+
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSanPham = Model.MaSanPham, @strURL = Request.Url.ToString() }))
+                    {
+                        <div>
+                            <div style="float:left; display:inline; height: 40px; line-height: 40px">
+                                Loại SP:
+                            </div>
+
+                            <div class="product_variant size" style="display: block; float: left; margin-left: 28px">
+
+                                <select class="niceselect_option" id="MaMau" name="MaMau">
+                                    @foreach (var item in CTSP_MauSac)
+                                    {
+
+                                        <option class="option" value="@item.MaMauSac,@item.Rom,@item.Ram" name="MaMau"> @item.MauSac.TenMauSac | Bản: @item.Rom/@item.Ram</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div style="clear:both"></div>
+                        <div class="product_variant quantity">
+                            <label>Số Lượng: </label><br />
+                            <input name="SoLuong" min="1" max="100" value="1" type="number">
+                        </div>
+                        <br />
+                        <div>
+                            <button class="button" type="submit">Thêm Vào Giỏ hàng</button>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="product_d_info">
+    <div class="row">
+        <div class="col-12">
+            <div class="product_d_inner">
+                <div class="product_info_button">
+                    <ul class="nav" role="tablist" id="nav-tab">
+                        <li>
+                            <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Mô Tả</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Thông Số</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Bình Luận</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="info" role="tabpanel">
+                        <div class="product_info_content">
+                            <p>@Model.ThongTinThemVeSP</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="sheet" role="tabpanel">
+                        <div class="product_d_table">
+                            <form action="#">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="first_child">Tên Sản Phẩm</td>
+                                            <td>@Model.TenSanPham</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">Màn Hình</td>
+                                            <td>@Model.ManHinh</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">CPU</td>
+                                            <td>@Model.CPU</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">Camera Trước</td>
+                                            <td>@Model.Camera_Truoc</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">Camera Sau</td>
+                                            <td>@Model.Camera_Sau</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">Hệ Điều Hành</td>
+                                            <td>@Model.HeDieuHanh</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">Quay Film</td>
+                                            <td>@Model.QuayPhim</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="first_child">Bảo Hành</td>
+                                            <td>@Model.ThoiGianBaoHanh tháng</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                        <div class="reviews_wrapper">
+                            <h2>1 Bình luận</h2>
+                            <div class="reviews_comment_box">
+                                <div class="comment_thmb">
+                                    <img src="/Assets/Customers/img/blog/comment2.jpg" alt="">
+                                </div>
+                                <div class="comment_text">
+                                    <div class="reviews_meta">
+                                        <div class="product_rating">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <p><strong>admin </strong>- September 12, 2018</p>
+                                        <span>roadthemes</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="comment_title">
+                                <h2>Add a review </h2>
+                                <p>Your email address will not be published. Required fields are marked </p>
+                            </div>
+                            <div class="product_rating mb-10">
+                                <h3>Your rating</h3>
+                                <ul>
+                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product_review_form">
+                                <form action="#">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="review_comment">Nội dung bình luận </label>
+                                            <textarea name="comment" id="review_comment"></textarea>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="author">Tên</label>
+                                            <input id="author" type="text">
+
+                                        </div>
+                                        <div class="col-lg-6 col-md-6">
+                                            <label for="email">Email </label>
+                                            <input id="email" type="text">
+                                        </div>
+                                    </div>
+                                    <button type="submit">Thêm mới bình luận</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion -->

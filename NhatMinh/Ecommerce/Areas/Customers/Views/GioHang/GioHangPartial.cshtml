@@ -1,0 +1,25 @@
+﻿<div class="mini_cart_wrapper">
+    <a href="javascript:void(0)">
+        <i class="fa fa-shopping-bag"></i>
+        @if (ViewBag.TongTien == null)
+        {
+            <span class="cart_price"> 0 vnđ<i class="ion-ios-arrow-down"></i></span>
+
+        }
+        else
+        {
+            <span class="cart_price"> @String.Format("{0:0,0}", ViewBag.TongTien) vnđ<i class="ion-ios-arrow-down"></i></span>
+
+        }
+        @if (@ViewBag.TongSoLuong == null)
+        {
+            <span class="cart_count">0</span>
+        }
+        else
+        {
+            <span class="cart_count">@ViewBag.TongSoLuong</span>
+
+        }
+
+    </a>
+</div>

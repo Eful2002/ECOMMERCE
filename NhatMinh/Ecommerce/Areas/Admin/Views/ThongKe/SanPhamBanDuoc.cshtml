@@ -1,0 +1,14 @@
+﻿@using Ecommerce.Models
+@model List<DonHang>
+@{
+    ViewBag.Title = "SanPhamBanDuoc";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>San Pham Ban Duoc Hom Nay</h2>
+@foreach (var item in Model)
+{
+    @item.MaDonHang
+    <br />
+    @item.NgayDat
+}

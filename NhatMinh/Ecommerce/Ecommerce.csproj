@@ -1,0 +1,545 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C80E9EFC-7B94-4F9C-B193-0D26E090E20B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ViettelStore</RootNamespace>
+    <AssemblyName>ViettelStore</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44359</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Admin\css\app.css" />
+    <Content Include="Assets\Admin\css\vendor.css" />
+    <Content Include="Assets\Admin\HinhAnh\icon.png" />
+    <Content Include="Assets\Admin\js\app.js" />
+    <Content Include="Assets\Admin\js\vendor.js" />
+    <Content Include="Assets\Customers\css\plugins.css" />
+    <Content Include="Assets\Customers\css\style.css" />
+    <Content Include="Assets\Customers\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="Assets\Customers\fonts\ionicons28b5.svg" />
+    <Content Include="Assets\Customers\img\about\about-us-policy-bg.jpg" />
+    <Content Include="Assets\Customers\img\about\about-us-signature.png" />
+    <Content Include="Assets\Customers\img\about\about1.jpg" />
+    <Content Include="Assets\Customers\img\about\about2.jpg" />
+    <Content Include="Assets\Customers\img\about\about3.jpg" />
+    <Content Include="Assets\Customers\img\about\about4.jpg" />
+    <Content Include="Assets\Customers\img\about\About_icon1.png" />
+    <Content Include="Assets\Customers\img\about\About_icon2.png" />
+    <Content Include="Assets\Customers\img\about\About_icon3.png" />
+    <Content Include="Assets\Customers\img\about\quote-icon.png" />
+    <Content Include="Assets\Customers\img\about\shipping1.png" />
+    <Content Include="Assets\Customers\img\about\shipping2.png" />
+    <Content Include="Assets\Customers\img\about\shipping3.png" />
+    <Content Include="Assets\Customers\img\about\shipping4.png" />
+    <Content Include="Assets\Customers\img\about\shipping5.png" />
+    <Content Include="Assets\Customers\img\about\testimonial1.jpg" />
+    <Content Include="Assets\Customers\img\about\testimonial2.jpg" />
+    <Content Include="Assets\Customers\img\about\testimonial3.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner1.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner10.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner11.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner12.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner13.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner14.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner16.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner2.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner3.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner4.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner5.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner6.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner7.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner8.jpg" />
+    <Content Include="Assets\Customers\img\bg\banner9.jpg" />
+    <Content Include="Assets\Customers\img\bg\coming-soon.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog-big1.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog-big2.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog-big3.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog-big4.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog-big5.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog1.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog2.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog3.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog4.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog6.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog7.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog8.jpg" />
+    <Content Include="Assets\Customers\img\blog\blog9.jpg" />
+    <Content Include="Assets\Customers\img\blog\blogpage1.jpg" />
+    <Content Include="Assets\Customers\img\blog\blogpage2.jpg" />
+    <Content Include="Assets\Customers\img\blog\blogpage3.jpg" />
+    <Content Include="Assets\Customers\img\blog\blogpage4.jpg" />
+    <Content Include="Assets\Customers\img\blog\blogpage5.jpg" />
+    <Content Include="Assets\Customers\img\blog\comment2.jpg" />
+    <Content Include="Assets\Customers\img\blog\comment2.png.jpg" />
+    <Content Include="Assets\Customers\img\blog\comment3.png.jpg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_11.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_11_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_11_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_11_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_11_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_Max.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_Max_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_Max_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_Max_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_12_Pro_Max_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_5S.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_5S_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_5S_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_5S_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_5S_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_6s_Plus.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_6s_Plus_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_6s_Plus_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_6s_Plus_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_6s_Plus_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_7_Plus.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_7_Plus_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_7_Plus_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_8_Plus.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_8_Plus_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_8_Plus_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_SE_%282020%29.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_SE_%282020%29_.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_SE_%282020%29_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_SE_%282020%29_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_SE_%282020%29_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_XR.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_XR_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_XR_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_XR_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\iPhone_XR_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA12-4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA12.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA12_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA12_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA12_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA32.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA32_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA32_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA32_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA32_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamSungA32_5.jpg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamsungGalaxy_S21.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamsungGalaxy_S21_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\SamsungGalaxy_S21_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_E1200.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_E1200_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_E1200_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_E1200_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_E1200_4.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_A51.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_A51_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_A51_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_A51_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_A52.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_M21.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_M21_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_M21_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_M21_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Note20_Ultra.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Note20_Ultra_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Note20_Ultra_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Note20_Ultra_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Note_10.png" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Note_10_1.png" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Note_10_2.png" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Note_10_3.png" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_S20.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_S20_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_S20_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_S20_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_S20_Ultra.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_S20_Ultra_1.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_S20_Ultra_2.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_S20_Ultra_3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Z_Flip3.jpeg" />
+    <Content Include="Assets\Customers\img\HinhAnhSanPham\Samsung_Galaxy_Z_Flip3_1.jpeg" />
+    <Content Include="Assets\Customers\img\icon\bkg_grid.png" />
+    <Content Include="Assets\Customers\img\icon\bkg_grid4.png" />
+    <Content Include="Assets\Customers\img\icon\bkg_grid4_hover.png" />
+    <Content Include="Assets\Customers\img\icon\bkg_grid_hover.png" />
+    <Content Include="Assets\Customers\img\icon\bkg_list.png" />
+    <Content Include="Assets\Customers\img\icon\bkg_list_hover.png" />
+    <Content Include="Assets\Customers\img\icon\categori-menu1.png" />
+    <Content Include="Assets\Customers\img\icon\categori-menu2.png" />
+    <Content Include="Assets\Customers\img\icon\categori-menu3.png" />
+    <Content Include="Assets\Customers\img\icon\icon-appstore.png" />
+    <Content Include="Assets\Customers\img\icon\icon-googleplay.png" />
+    <Content Include="Assets\Customers\img\icon\icon-phone.png" />
+    <Content Include="Assets\Customers\img\icon\logoV.png" />
+    <Content Include="Assets\Customers\img\icon\owl.video.play.png" />
+    <Content Include="Assets\Customers\img\icon\papyel.png" />
+    <Content Include="Assets\Customers\img\icon\payment.png" />
+    <Content Include="Assets\Customers\img\logoV.png" />
+    <Content Include="Assets\Customers\img\logo\logo-white.png" />
+    <Content Include="Assets\Customers\img\logo\logo.png" />
+    <Content Include="Assets\Customers\img\logo\LogoViettelStore.png" />
+    <Content Include="Assets\Customers\img\product\anh1.jpg" />
+    <Content Include="Assets\Customers\img\product\anh2.jpg" />
+    <Content Include="Assets\Customers\img\product\anh3.jpg" />
+    <Content Include="Assets\Customers\img\product\anh4.jpg" />
+    <Content Include="Assets\Customers\img\product\anh5.jpg" />
+    <Content Include="Assets\Customers\img\product\product1.jpg" />
+    <Content Include="Assets\Customers\img\product\product11.jpg" />
+    <Content Include="Assets\Customers\img\product\product12.jpg" />
+    <Content Include="Assets\Customers\img\product\product13.jpg" />
+    <Content Include="Assets\Customers\img\product\product14.jpg" />
+    <Content Include="Assets\Customers\img\product\product15.jpg" />
+    <Content Include="Assets\Customers\img\product\product16.jpg" />
+    <Content Include="Assets\Customers\img\product\product17.jpg" />
+    <Content Include="Assets\Customers\img\product\product18.jpg" />
+    <Content Include="Assets\Customers\img\product\product19.jpg" />
+    <Content Include="Assets\Customers\img\product\product2.jpg" />
+    <Content Include="Assets\Customers\img\product\product20.jpg" />
+    <Content Include="Assets\Customers\img\product\product21.jpg" />
+    <Content Include="Assets\Customers\img\product\product22.jpg" />
+    <Content Include="Assets\Customers\img\product\product23.jpg" />
+    <Content Include="Assets\Customers\img\product\product24.jpg" />
+    <Content Include="Assets\Customers\img\product\product25.jpg" />
+    <Content Include="Assets\Customers\img\product\product26.jpg" />
+    <Content Include="Assets\Customers\img\product\product27.jpg" />
+    <Content Include="Assets\Customers\img\product\product28.jpg" />
+    <Content Include="Assets\Customers\img\product\product29.jpg" />
+    <Content Include="Assets\Customers\img\product\product3.jpg" />
+    <Content Include="Assets\Customers\img\product\product4.jpg" />
+    <Content Include="Assets\Customers\img\product\product5.jpg" />
+    <Content Include="Assets\Customers\img\product\product6.jpg" />
+    <Content Include="Assets\Customers\img\product\product7.jpg" />
+    <Content Include="Assets\Customers\img\product\product9.jpg" />
+    <Content Include="Assets\Customers\img\product\productbig2.jpg" />
+    <Content Include="Assets\Customers\img\product\productbig3.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category1.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category10.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category2.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category3.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category4.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category5.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category6.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category7.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category8.jpg" />
+    <Content Include="Assets\Customers\img\s-product\category9.jpg" />
+    <Content Include="Assets\Customers\img\s-product\product.jpg" />
+    <Content Include="Assets\Customers\img\s-product\product2.jpg" />
+    <Content Include="Assets\Customers\img\s-product\product3.jpg" />
+    <Content Include="Assets\Customers\img\slider\Banner.jpg" />
+    <Content Include="Assets\Customers\img\slider\iphone13.png" />
+    <Content Include="Assets\Customers\img\slider\slider1.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider10.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider11.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider12.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider13.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider14.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider17.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider18.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider19.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider2.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider20.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider3.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider4.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider5.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider6.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider7.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider8.jpg" />
+    <Content Include="Assets\Customers\img\slider\slider9.jpg" />
+    <Content Include="Assets\Customers\js\app.js" />
+    <Content Include="Assets\Customers\js\main.js" />
+    <Content Include="Assets\Customers\js\map.js" />
+    <Content Include="Assets\Customers\js\plugins.js" />
+    <Content Include="Assets\TrangLogin\css\style.css" />
+    <Content Include="Assets\TrangLogin\images\facebook.png" />
+    <Content Include="Assets\TrangLogin\images\google.png" />
+    <Content Include="Assets\TrangLogin\images\key.png" />
+    <Content Include="Assets\TrangLogin\images\restaurant.png" />
+    <Content Include="Assets\TrangLogin\images\slash_it.png" />
+    <Content Include="Assets\TrangLogin\images\tick.png" />
+    <Content Include="Assets\TrangLogin\images\twitter.png" />
+    <Content Include="Assets\TrangLogin\images\user.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DangNhapController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhachHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongKeController.cs" />
+    <Compile Include="Areas\Customers\Controllers\DangNhapController.cs" />
+    <Compile Include="Areas\Customers\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Customers\Controllers\GioHangController.cs" />
+    <Compile Include="Areas\Customers\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Customers\Controllers\SapXepController.cs" />
+    <Compile Include="Areas\Customers\Controllers\ThongTinController.cs" />
+    <Compile Include="Areas\Customers\Controllers\TimKiemController.cs" />
+    <Compile Include="Areas\Customers\CustomersAreaRegistration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BinhLuan.cs" />
+    <Compile Include="Models\ChiTietDonHang.cs" />
+    <Compile Include="Models\ChiTietPhieuNhap.cs" />
+    <Compile Include="Models\ChiTietSP.cs" />
+    <Compile Include="Models\DBViettelStore.cs" />
+    <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\HangSanXuat.cs" />
+    <Compile Include="Models\HinhAnh.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\LoaiSanPham.cs" />
+    <Compile Include="Models\MauSac.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\PhieuNhap.cs" />
+    <Compile Include="Models\SanPham.cs" />
+    <Compile Include="Models\ViewModel\GioHang.cs" />
+    <Compile Include="Models\ViewModel\HienThiDanhMucHSX.cs" />
+    <Compile Include="Models\ViewModel\HienThiSanPham.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Customers\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Assets\Customers\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="Assets\Customers\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="Assets\Customers\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="Assets\Customers\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="Assets\Customers\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Assets\Customers\fonts\ionicons28b5.eot" />
+    <Content Include="Assets\Customers\fonts\ionicons28b5.ttf" />
+    <Content Include="Assets\Customers\fonts\ionicons28b5.woff" />
+    <Content Include="Assets\Customers\fonts\Material-Design-Iconic-Fontd1f1.ttf" />
+    <Content Include="Assets\Customers\fonts\Material-Design-Iconic-Fontd1f1.woff" />
+    <Content Include="Assets\Customers\fonts\Material-Design-Iconic-Fontd1f1.woff2" />
+    <Content Include="Areas\Customers\Views\Shared\_LayoutCustomer.cshtml" />
+    <Content Include="Areas\Customers\Views\Shared\_LayoutDetails.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\SanPhamPartialView.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\PhuKienPartialView.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\XemChiTiet.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\GioHang.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\MiniCart.cshtml" />
+    <Content Include="Areas\Customers\Views\Error\KhongDuSoLuong.cshtml" />
+    <Content Include="Areas\Customers\Views\Error\GioHangTrong.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\DanhMucDienThoaiPartial.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\DienThoaiPartialView.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\DienThoaiTheoDanhMuc.cshtml" />
+    <Content Include="Areas\Customers\Views\Home\DienThoaiAll.cshtml" />
+    <Content Include="Areas\Customers\Views\ThongTin\LienHe.cshtml" />
+    <Content Include="Areas\Customers\Views\ThongTin\ThongTin.cshtml" />
+    <Content Include="Areas\Customers\Views\Error\DatHangThanhCong.cshtml" />
+    <Content Include="Assets\TrangLogin\images\Thumbs.db" />
+    <Content Include="Areas\Customers\Views\Home\DanhMucDienThoaiMenuPartial.cshtml" />
+    <Content Include="Areas\Customers\Views\DangNhap\DangKi.cshtml" />
+    <Content Include="Areas\Customers\Views\Error\DangKiThanhCong.cshtml" />
+    <Content Include="Areas\Customers\Views\DangNhap\DangNhap.cshtml" />
+    <Content Include="Areas\Customers\Views\DangNhap\TaiKhoanCaNhan.cshtml" />
+    <Content Include="Areas\Customers\Views\Error\CapNhatThanhCong.cshtml" />
+    <Content Include="Areas\Customers\Views\Error\Error404.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\TongDonPartialView.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\XemChiTietDonHangDaMua.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\XacNhanPartialView.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\DangGiaoPartialView.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\DaGiaoPartialView.cshtml" />
+    <Content Include="Areas\Customers\Views\GioHang\DaHuyPartialView.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\KhachHang\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\Error404.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\ErrorKey.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DonHangAll.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DonHangXacNhan.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DonHangDangGiao.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DonHangDaGiao.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DonHangDaHuy.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\XemChiTietDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\Thongke.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\SanPhamBanDuoc.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\DienThoaiDuoi1Trieu.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\DienThoaiTu1Den3Trieu.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\DienThoaiTu3Den7Trieu.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\DienThoaiTu7Den10Trieu.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\DienThoaiTu10Den15Trieu.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\DienThoaiTu15Den20Trieu.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\DienThoaiTren20Trieu.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\CaoDenThap.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\ThapDenCao.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\BanChay.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\SSCaoDenThap.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\SSThapDenCao.cshtml" />
+    <Content Include="Areas\Customers\Views\SapXep\SSBanChay.cshtml" />
+    <Content Include="Areas\Customers\Views\TimKiem\TimKiem.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\TKThangNam.cshtml" />
+    <Content Include="Areas\Admin\Views\DangNhap\DangNhap.cshtml" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52303</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44359/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

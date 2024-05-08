@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "Thống kê";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="title-block">
+    <h1 class="title"> Thống Kê @ViewBag.thang</h1>
+</div>
+<section class="section">
+    <div class="row sameheight-container">
+        <div class="col-md-6">
+            <div class="card card-block sameheight-item" style="height: 119px;">
+                <div class="title-block">
+                    <h3 class="title"> Theo Tháng </h3>
+                </div>
+                @using (Html.BeginForm("TKThangNam", "ThongKe"))
+                {
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Chọn tháng &nbsp; </label>
+                            <select name="thang">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword3">&nbsp;&nbsp;&nbsp;&nbsp; Chọn năm &nbsp; </label>
+                            <select name="nam">
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option selected value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                            </select>
+
+                        </div>
+                        &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="submit" class="btn btn-primary">Thực Hiện</button>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- #region kết quả -->
+        @if (ViewBag.thang != null)
+        {
+            <div class="col-md-6">
+                <div class="card card-block sameheight-item" style="height: 119px;">
+                    <div class="title-block">
+                        <h3 class="title"> Thống kê tháng @ViewBag.thang/@ViewBag.Nam là </h3>
+                    </div>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Chọn tháng &nbsp; </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- #endregion -->
+    </div>
+</section>
+<!-- #region Kết quả -->
+<!-- #endregion -->
+<section class="section" style="display:none">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title-block">
+                        <h3 class="title"> Hiện Tại </h3>
+                    </div>
+                    <section class="example">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Phân Loại</th>
+                                    <th>Số Đơn</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Chi Tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hôm Nay</td>
+                                    <td>@ViewBag.DoanhThuNgayHomNay vnđ</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Tháng Nay</td>
+                                    <td>@ViewBag.CountDonHangDangGiao</td>
+                                    <td>@String.Format("{0:0,0}", ViewBag.DoanhThuDangGiao) vnđ</td>
+                                    <td><a href="~/Admin/DonHang/DonHangDangGiao"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Năm Nay</td>
+                                    <td><b style="color:red">@ViewBag.CountDonHangDaGiao</b></td>
+                                    <td><b style="color:red">@String.Format("{0:0,0}", ViewBag.DoanhThuDaGiao) </b>vnđ</td>
+                                    <td><a href="~/Admin/DonHang/DonHangDaGiao"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <td>SUM</td>
+                                    <th>@ViewBag.CountDonHang</th>
+                                    <th>@String.Format("{0:0,0}", ViewBag.DoanhThuTong) vnđ</th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title-block">
+                        <h3 class="title"> Thành viên </h3>
+                    </div>
+                    <section class="example">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Phân Loại</th>
+                                    <th>Thành Viên</th>
+                                    <th>Chi Tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nhân Viên</td>
+                                    <td>@ViewBag.CountNhanVien</td>
+                                    <td><a href="~/Admin/NhanVien/Index"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Khách Hàng</td>
+                                    <td>@ViewBag.CountKhachHang</td>
+                                    <td><a href="~/Admin/KhachHang/Index"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title-block">
+                        <h3 class="title"> Đơn Hàng </h3>
+                    </div>
+                    <section class="example">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Phân Loại</th>
+                                    <th>Số Đơn</th>
+                                    <th>Tổng Tiền</th>
+                                    <th>Chi Tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Xử Lý</td>
+                                    <td>@ViewBag.CountDonHangXacNhan</td>
+                                    <td>@String.Format("{0:0,0}", ViewBag.DoanhThuXacNhan) vnđ</td>
+                                    <td><a href="~/Admin/DonHang/DonHangXacNhan"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Đang Giao</td>
+                                    <td>@ViewBag.CountDonHangDangGiao</td>
+                                    <td>@String.Format("{0:0,0}", ViewBag.DoanhThuDangGiao) vnđ</td>
+                                    <td><a href="~/Admin/DonHang/DonHangDangGiao"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Đã giao</td>
+                                    <td><b style="color:red">@ViewBag.CountDonHangDaGiao</b></td>
+                                    <td><b style="color:red">@String.Format("{0:0,0}", ViewBag.DoanhThuDaGiao) </b>vnđ</td>
+                                    <td><a href="~/Admin/DonHang/DonHangDaGiao"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Đã Hủy</td>
+                                    <td>@ViewBag.CountDonHangDaHuy</td>
+                                    <td>@String.Format("{0:0,0}", ViewBag.DoanhThuDaHuy) vnđ</td>
+                                    <td><a href="~/Admin/DonHang/DonHangDaHuy"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+                                </tr>
+                                <tr>
+                                    <td>SUM</td>
+                                    <th>@ViewBag.CountDonHang</th>
+                                    <th>@String.Format("{0:0,0}", ViewBag.DoanhThuTong) vnđ</th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title-block">
+                        <h3 class="title"> Thành viên </h3>
+                    </div>
+                    <section class="example">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Phân Loại</th>
+                                    <th>Thành Viên</th>
+                                    <th>Chi Tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nhân Viên</td>
+                                    <td>@ViewBag.CountNhanVien</td>
+                                    <td><a href="~/Admin/NhanVien/Index"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Khách Hàng</td>
+                                    <td>@ViewBag.CountKhachHang</td>
+                                    <td><a href="~/Admin/KhachHang/Index"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

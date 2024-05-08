@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Ecommerce.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Quản Lý Khách Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="title-block">
+    <h1 class="title"> Quản Lý Khách Hàng </h1>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title-block">
+                        <a href="~/Admin/KhachHang/Create" class="btn btn-oval btn-primary">Thêm Mới Khách Hàng</a>
+                    </div>
+                    <section class="example">
+                        <div class="table-flip-scroll">
+                            <table class="table table-striped table-bordered table-hover flip-content">
+                                <thead class="flip-header">
+                                    <tr>
+                                        <th>Họ Và Tên</th>
+                                        <th>Tên Đăng Nhập</th>
+                                        <th>Mật Khẩu</th>
+                                        <th>SDT / Email</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="even gradeC">
+                                            <td>@item.HoVaTen</td>
+                                            <td>@item.TaiKhoanKH</td>
+                                            <td>@item.MatKhauKH</td>
+                                            <td>@item.SDT/@item.Email</td>
+                                            @if (item.TrangThai == 0)
+                                            {
+                                                <td><a href="~/Admin/KhachHang/KhoaTaiKhoan?sMakhachHang=@item.TaiKhoanKH">Đang hoạt động</a></td>
+                                            }
+
+                                            else
+                                            {
+                                                <td><a href="~/Admin/KhachHang/MoTaiKhoan?sMakhachHang=@item.TaiKhoanKH">Tạm Khóa</a></td>
+
+
+                                            }
+                                            <td style="text-align:center">
+                                                <a href="~/Admin/KhachHang/Delete?id=@item.TaiKhoanKH"><i class="fa fa-trash"></i></a> |
+                                                <a href="~/Admin/KhachHang/Edit?id=@item.TaiKhoanKH"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |
+                                                <a href="~/Admin/KhachHang/Details?id=@item.TaiKhoanKH"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            @*   @Html.PagedListPager(Model, page => Url.Action("Index", "Home", new { page }))*@
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

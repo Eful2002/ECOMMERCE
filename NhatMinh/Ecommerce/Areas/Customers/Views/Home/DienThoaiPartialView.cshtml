@@ -1,0 +1,37 @@
+﻿@using Ecommerce.Models.ViewModel
+@model List<HienThiSanPham>
+
+@foreach (var item in Model)
+{
+    <article class="single_product">
+        <figure>
+
+            <div class="product_thumb">
+                <a class="primary_img" href="~/Customers/Home/XemChiTiet?masanpham=@item.iMaSanPham"><img src="~/Assets/Customers/img/HinhAnhSanPham/@item.sAnhBia" alt=""></a>
+                <a class="secondary_img" href="~/Customers/Home/XemChiTiet?masanpham=@item.iMaSanPham"><img src="~/Assets/Customers/img/HinhAnhSanPham/@item.sAnhBia" alt=""></a>
+                @*<div class="label_product">
+                    <span class="label_sale">Mới</span>
+                </div>*@
+                @*<div class="action_links">
+                    <ul>
+                        <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                        <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                        <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                    </ul>
+                </div>*@
+            </div>
+            <div class="product_content">
+                <div class="product_content_inner">
+                    <h4 class="product_name"><a href="~/Customers/Home/XemChiTiet?masanpham=@item.iMaSanPham">@item.sTenSanPham</a></h4>
+                    <div class="price_box">
+                        <span class="current_price">@String.Format("{0:0,0}", item.dGiaBan) vnđ</span>
+                    </div>
+                </div>
+                <div class="add_to_cart">
+                    <a href="~/Customers/Home/XemChiTiet?masanpham=@item.iMaSanPham" title="Add to cart">Xem Chi Tiết</a>
+                </div>
+
+            </div>
+        </figure>
+    </article>
+}

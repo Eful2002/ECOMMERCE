@@ -1,0 +1,36 @@
+﻿@using Ecommerce.Models.ViewModel
+@model List<GioHang>
+<!--mini cart-->
+
+    @foreach (var item in Model)
+    {
+        <div class="cart_item">
+            <div class="cart_img">
+                <a href="/Customers/Home/XemChiTiet?masanpham=@item.iMaSanPham"><img src="~/Assets/Customers/img/HinhAnhSanPham/@item.sAnhChinh" alt=""></a>
+            </div>
+            <div class="cart_info">
+                <a href="/Customers/Home/XemChiTiet?masanpham=@item.iMaSanPham">@item.sTenSanPham</a>
+                <p>M: @item.sTenMauSac, @item.iRom/@item.iRam GB</p>
+                <p>SL: @item.iSoLuong sp | @string.Format("{0:0,0}", item.dDonGia) vnđ </p>
+
+            </div>
+            <div class="cart_remove">
+                <a href="#"><i class="ion-android-close"></i></a>
+            </div>
+        </div>
+    }
+    <div class="mini_cart_table">
+        <div class="cart_total">
+            <span>Tổng tiền:</span>
+            <span class="price">@String.Format("{0:0,0}",ViewBag.TongTien) vnđ</span>
+        </div>
+        <div class="cart_total mt-10">
+            <span>Tổng sl:</span>
+            <span class="price">@ViewBag.TongSoLuong sp</span>
+        </div>
+    </div>
+    <div class="mini_cart_footer">
+        <div class="cart_button">
+            <a href="~/Customers/GioHang/GioHang">XEM GIỎ HÀNG</a>
+        </div>
+    </div>

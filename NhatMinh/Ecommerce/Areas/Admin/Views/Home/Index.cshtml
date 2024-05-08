@@ -1,0 +1,61 @@
+﻿@using Ecommerce.Models.ViewModel
+@using PagedList.Mvc;
+@model PagedList.IPagedList<HienThiSanPham>
+@{
+    ViewBag.Title = "Trang Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="title-block">
+    <h1 class="title"> Quản Lý Sản Phẩm </h1>
+    @*<p class="title-description"> Thêm mới sản phẩm <a href="#">tại đây</a> </p>*@
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title-block">
+                        <a href="/Admin/SanPhams/Create" class="btn btn-oval btn-primary">Thêm Mới Sản Phẩm</a>
+                    </div>
+                    <section class="example">
+                        <div class="table-flip-scroll">
+                            <table class="table table-striped table-bordered table-hover flip-content">
+                                <thead class="flip-header">
+                                    <tr>
+                                        <th>Mã SP</th>
+                                        <th>Tên Sản Phẩm</th>
+                                        <th>Ảnh</th>
+                                        <th>Giá Bán</th>
+                                        <th>Số Lượng</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="even gradeC">
+                                            <td>@item.iMaSanPham</td>
+                                            <td>@item.sTenSanPham @item.sTenMauSac @item.iRom/@item.iRam GB</td>
+                                            <td>
+                                                <img src="/Assets/Customers/img/HinhAnhSanPham/@item.sAnhBia" width="120" height="150">
+                                            </td>
+                                            <td class="center">@item.dGiaBan</td>
+                                            <td class="center">@item.iSoLuong</td>
+                                            <td class="center">
+                                                <a href="~/Admin/SanPhams/Delete?id=@item.iMaSanPham"><i class="fa fa-trash"></i></a> |
+                                                <a href="~/Admin/SanPhams/Edit?id=@item.iMaSanPham"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |
+                                                <a href="~/Admin/SanPhams/Details?id=@item.iMaSanPham"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            @Html.PagedListPager(Model, page => Url.Action("Index", "Home", new { page }))
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

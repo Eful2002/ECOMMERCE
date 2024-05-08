@@ -1,0 +1,160 @@
+﻿@using Ecommerce.Models.ViewModel
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Areas/Customers/Views/Shared/_LayoutDetails.cshtml";
+}
+
+<div class="cart_page_bg">
+    <div class="container">
+        <div class="shopping_cart_area">
+            <div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="cart_page table-responsive">
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="product_thumb">Ảnh</th>
+                                            <th class="product_name">Sản Phẩm</th>
+                                            <th class="product_name">Thông Số</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product_quantity">Số Lượng</th>
+                                            <th class="product_total">Thành Thiền</th>
+                                            <th class="product_remove">Cập Nhật</th>
+                                            <th>Xóa</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <tbody>
+                                            <tr>
+                                                @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMaSanPham = item.iMaSanPham, @iMaMauSac = item.iMaMauSac, @iRom = item.iRom, @iRam = item.iRam, @strURL = Request.Url.ToString() }))
+                                                {
+                                                    <td class="product_thumb"><a href="/Customers/Home/XemChiTiet?masanpham=@item.iMaSanPham"><img src="~/Assets/Customers/img/HinhAnhSanPham/@item.sAnhChinh" alt=""></a></td>
+                                                    <td class="product_name"><a href="/Customers/Home/XemChiTiet?masanpham=@item.iMaSanPham">@item.sTenSanPham</a></td>
+                                                    <td class="product_name"><a href="#">@item.sTenMauSac | @item.iRom/@item.iRam</a></td>
+                                                    <td class="product-price">@item.dDonGia</td>
+                                                    <td class="product_quantity"><input min="1" max="100" value="@item.iSoLuong" name="txtSoLuongMoi" type="number"></td>
+                                                    <td class="product_total">@string.Format("{0:0,0}", item.ThanhTien) vnđ</td>
+                                                    <td>
+                                                        <input class="checkout_btn" type="submit" value="Cập Nhật" />
+                                                    </td>
+                                                }
+                                                @using (Html.BeginForm("XoaGioHang", "GioHang", new { @iMaSanPham = item.iMaSanPham, @iMaMauSac = item.iMaMauSac, @iRom = item.iRom, @iRam = item.iRam, @strURL = Request.Url.ToString() }))
+                                                {
+                                                    <td>
+                                                        <input class="checkout_btn" type="submit" placeholder="xoa" value="Xóa" />
+                                                    </td>
+                                                }
+                                            </tr>
+                                        </tbody>
+                                    }
+                                </table>
+
+                            </div>
+                            @*<div class="cart_submit">
+                                    <button type="submit">Cập nhật giỏ hàng</button>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+                <!--coupon code area start-->
+                <div class="coupon_area">
+                    <div class="row">
+                        @using (Html.BeginForm("DatHang", "GioHang"))
+                        {
+                            <!-- #region Địa chỉ giao hàng -->
+                            <div class="col-lg-6 col-md-6" style="float:left;">
+                                <div class="coupon_code left">
+                                    <h3>ĐỊA CHỈ GIAO HÀNG</h3>
+                                    <div class="coupon_inner">
+                                        <p>Nhập thông tin giao hàng bên dưới</p>
+                                        <label>Tên Người Nhận </label>
+                                        <input placeholder="Tên người nhận" value="" type="text" oninvalid="alert('Không Bỏ Trống Tên Người Nhận!');" required name="txtTenNguoiNhan">
+                                        <label>SDT</label>
+                                        <input placeholder="Số điện thoại (10 số)" value="" oninvalid="alert('Không Bỏ Trống SDT / 10 số!');" type="text" pattern="[0-9]{10}" required  name="txtSDT">
+                                        <div style="clear:both"></div><br />
+                                        <div class="row">
+                                            <div class="col-3" style="float:left; display:inline; height: 40px; line-height: 40px">
+                                                Địa Chỉ Giao Hàng:
+                                            </div>
+                                            <div class="col-7">
+                                                <input  placeholder="vd: 22/6, Lê Duẫn" oninvalid="alert('Không Bỏ Trống Địa Chỉ Giao Hàng!');" required value="" type="text" name="txtDiaChi">
+                                            </div>
+                                        </div>
+                                        <div style="clear:both"></div> <br />
+                                        <!-- #region Select sequences -->
+                                        <div class="row">
+                                            <div class="col-3" style="float:left; display:inline; height: 40px; line-height: 40px">
+                                                Tỉnh Thành:
+                                            </div>
+                                            <div class="col-6">
+                                                <select class="form-control" id="province" name="province" onchange="changeFunc();">
+                                                    <option value="" selected>----</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div style="clear:both"></div> <br />
+
+                                        <div class="row">
+                                            <div class="col-3" style="float:left; display:inline; height: 40px; line-height: 40px">
+                                                Quận/ Huyện:
+                                            </div>
+                                            <div class="col-6">
+                                                <select class="form-control" id="district" name="district" onchange="changeFuncDistrict();">
+                                                    <option value="" selected> Chọn Quận/ Huyện </option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div style="clear:both"></div> <br />
+
+                                        <div class="row">
+                                            <div class="col-3" style="float:left; display:inline; height: 40px; line-height: 40px">
+                                                Phường:
+                                            </div>
+                                            <div class="col-6">
+                                                <select class="form-control" id="ward" name="ward" aria-placeholder="Quan huyen">
+                                                    <option value="" selected> Chọn Phường </option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div style="clear:both"></div>
+                                        <!-- #endregion -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- #endregion -->
+                            <div class="col-lg-6 col-md-6" style="float:right">
+                                <div class="coupon_code right">
+                                    <h3>Tổng Tiền Cần Thanh Toán</h3>
+                                    <div class="coupon_inner">
+                                        <div class="cart_subtotal">
+                                            <p>Tổng Sản Phẩm</p>
+                                            <p class="cart_amount">@ViewBag.TongSoLuong sp</p>
+                                        </div>
+                                        <div class="cart_subtotal ">
+                                            <p>Tổng Tiền:</p>
+                                            <p class="cart_amount"><span></span>@String.Format("{0:0,0}", ViewBag.TongTien) vnđ</p>
+                                        </div>
+                                        <hr />
+
+                                        <input type="submit" class="btn btn-danger" style="border:solid 1px red" value="Đặt Hàng" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!--coupon code area end-->
+            </div>
+        </div>
+    </div>
+</div>

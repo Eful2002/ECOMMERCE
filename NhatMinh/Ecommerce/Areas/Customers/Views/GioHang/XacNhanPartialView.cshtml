@@ -1,0 +1,52 @@
+﻿@using Ecommerce.Models
+@model IEnumerable<DonHang>
+
+
+<h3>Đơn Hàng Chờ Phê Duyệt</h3>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã Đơn Hàng</th>
+                <th>Ngày Đặt</th>
+                <th>Trạng thái</th>
+                <th>Tổng Tiền</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaDonHang</td>
+                    <td>@item.NgayDat</td>
+                    @switch (item.TrangThai)
+                    {
+                        case 0:
+                            <td>Chờ Xác Nhận</td>
+                            break;
+                        case 1:
+                            <td>Đang Giao</td>
+                            break;
+                        case 2:
+                            <td>Đã Giao</td>
+                            break;
+                        case 4:
+                            <td>Đã Hủy</td>
+                            break;
+                        default:
+                            <td>Chờ Xử Lý</td>
+                            break;
+                    }
+                    <td>@String.Format("{0:0,0}", item.TongTien) vnđ</td>
+                    <td>
+                        @Html.ActionLink("Chi Tiết", "XemChiTietDonHangDaMua", "GioHang", new { @iMaDonHang = item.MaDonHang }, null)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+

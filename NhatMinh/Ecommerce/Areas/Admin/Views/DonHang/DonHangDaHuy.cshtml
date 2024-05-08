@@ -1,0 +1,65 @@
+﻿@using Ecommerce.Models
+@model List<DonHang>
+@{
+    ViewBag.Title = "Đơn Hủy";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="title-block">
+    <h1 class="title"> Quản Lý Đơn Hàng </h1>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <section class="example">
+                        <div class="table-flip-scroll">
+                            <table class="table table-striped table-bordered table-hover flip-content">
+                                <thead class="flip-header">
+                                    <tr style="text-align:center">
+                                        <th width="10%">Mã Đơn Hàng</th>
+                                        <th width="30%">Tên Người Nhận</th>
+                                        <th>Ngày Đặt</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="even gradeC">
+                                            <td>@item.MaDonHang</td>
+                                            <td>@item.TenNguoiNhan</td>
+                                            <td>@item.NgayDat</td>
+                                            @switch (item.TrangThai)
+                                            {
+                                                case 0:
+                                                    <td>Chờ Duyệt</td>
+                                                    break;
+                                                case 1:
+                                                    <td>Đang Giao</td>
+                                                    break;
+                                                case 2:
+                                                    <td>Đã Giao</td>
+                                                    break;
+                                                case 3:
+                                                    <td>Đã hủy</td>
+                                                    break;
+                                            }
+
+                                            <td style="text-align:center">
+                                               <a href="~/Admin/DonHang/XemChiTietDonHang?iMaDonHang=@item.MaDonHang"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

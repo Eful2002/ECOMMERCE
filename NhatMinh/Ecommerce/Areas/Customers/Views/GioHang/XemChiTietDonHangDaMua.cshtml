@@ -1,0 +1,89 @@
+﻿@using Ecommerce.Models
+@model DonHang
+@{
+    ViewBag.Title = "XemChiTietDonHangDaMua";
+    Layout = "~/Areas/Customers/Views/Shared/_LayoutDetails.cshtml";
+}
+@{IEnumerable<ChiTietDonHang> lstChiTietDH = (IEnumerable<ChiTietDonHang>)ViewBag.listchitietdonhang;}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <label>Tên Người Nhận: @Model.TenNguoiNhan</label>
+        </div>
+        <div class="col-lg-4">
+            <label>Ngày Đặt: @Model.NgayDat</label>
+        </div>
+        <div class="col-lg-4">
+            @switch (Model.TrangThai)
+            {
+                case 0:
+                    <label>Trạng Thái: <b>Chờ Xác Nhận</b></label>
+                    break;
+                case 1:
+                    <label>Trạng Thái: <b>Đang Giao</b></label>
+                    break;
+                case 2:
+                    <label>Trạng Thái: <b>Đã Giao</b></label>
+                    break;
+                case 4:
+                    <label>Trạng Thái: <b>Đã Hủy</b></label>
+                    break;
+                default:
+                    <label>Trạng Thái: <b>Chờ Xử Lý</b></label>
+                    break;
+            }
+        </div>
+        <div class="col-lg-12">
+            Địa Chỉ Giao Hàng: @Model.SDT | ĐC: @Model.DiaChi, @Model.ThanhPho, @Model.Quan, @Model.Phuong
+        </div>
+    </div>
+</div>
+<div class="cart_page_bg">
+    <div class="container">
+        <div class="shopping_cart_area">
+            <form action="#">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="cart_page table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="product_remove">Mã Sản Phẩm</th>
+                                            <th class="product_thumb">Tên Sản Phẩm</th>
+                                            <th class="product_name">Ảnh</th>
+                                            <th class="product-price">Thông Số</th>
+                                            <th class="product_total">Số Lượng</th>
+                                            <th class="product_total">Thành Tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in lstChiTietDH)
+                                        {
+                                            <tr>
+
+                                                <td class="product_name"><a href="#">@item.MaSanPham</a></td>
+                                                <td class="product_name"><a href="#">@item.SanPham.TenSanPham</a></td>
+                                                <td class="product_thumb"><a href="#"><img src="~/Assets/Customers/img/HinhAnhSanPham/@item.SanPham.AnhBia" alt=""></a></td>
+                                                <td class="product_name"><a href="#">@item.MaMauSac - @item.Rom/@item.Ram</a></td>
+                                                <td class="product-price">@item.SoLuongMua</td>
+                                                <td class="product_total">@String.Format("{0:0,0}", item.ThanhTien) vnđ</td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td colspan="4"></td>
+                                            <td><b>Tổng SL: @Model.ChiTietDonHang.Sum(n => n.SoLuongMua)</b></td>
+                                            <td><b>Tổng Tiền: @String.Format("{0:0,0}", Model.ChiTietDonHang.Sum(n => n.ThanhTien)) vnđ</b></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

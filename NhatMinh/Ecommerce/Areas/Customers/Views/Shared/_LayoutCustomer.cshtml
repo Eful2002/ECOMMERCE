@@ -1,0 +1,616 @@
+﻿@using Ecommerce.Models
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Assets/Admin/HinhAnh/icon.png">
+
+    <!-- CSS
+    ========================= -->
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/Assets/Customers/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/Assets/Customers/css/style.css">
+</head>
+<body>
+    <!-- #region Menu khi responsive mobile -->
+    <div class="off_canvars_overlay"></div>
+    <div class="Offcanvas_menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="canvas_open">
+                        <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                    </div>
+                    <div class="Offcanvas_menu_wrapper">
+                        <div class="canvas_close">
+                            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                        </div>
+                        <!-- #region Thanh tìm kiếm -->
+                        <div class="search_container">
+                            @using (Html.BeginForm("TimKiem", "TimKiem"))
+                            {
+                <div class="hover_category">
+                    <select class="select_option" name="loai">
+                        <option value="1">Điện Thoại</option>
+                        <option value="2">Phụ Kiện</option>
+                        <option value="3">Giá Bán</option>
+                        <option value="4">Dưới 1 Triệu</option>
+                        <option value="5">Từ 1 Đến 3 Triệu</option>
+                        <option value="6">Từ 3 Đến 7 Triệu</option>
+                        <option value="7">Từ 7 Đến 10 Triệu</option>
+                        <option value="8">Từ 10 Đến 15 Triệu</option>
+                        <option value="9">Từ 15 Đến 20 Triệu</option>
+                        <option value="10">Trên 20 Triệu</option>
+
+                    </select>
+                </div>
+                                <div class="search_box">
+                                    <input placeholder="Tìm kiếm sản phẩm..." name="sTuKhoa" type="text" required>
+                                    <button type="submit">Tìm Kiếm</button>
+                                </div>}
+                        </div>
+                        <!-- #endregion Thanh tìm kiếm -->
+                        <!-- #region Menu -->
+                        <div id="menu" class="text-left ">
+                            <ul class="offcanvas_main_menu">
+                                <li class="menu-item-has-children active">
+                                    <a href="~/Customers/Home/Index">Trang Chủ</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Sản Phẩm</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item-has-children">
+                                            <ul>
+                                                @Html.Action("DanhMucDienThoaiMenuPartial", "Home")
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="#">Tin Tức</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="#" onclick="alert('Chưa phát triển chức năng này')">Tin Khuyến Mãi</a></li>
+                                        <li><a href="#" onclick="alert('Chưa phát triển chức năng này')">Tin Công Nghệ</a></li>
+                                        <li><a href="#" onclick="alert('Chưa phát triển chức năng này')">Dịch Vụ</a></li>
+                                        <li><a href="#" onclick="alert('Chưa phát triển chức năng này')">Tuyển Dụng</a></li>
+                                    </ul>
+
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="~/Customers/ThongTin/ThongTin">Thông Tin </a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="~/Customers/ThongTin/LienHe">Liên Hệ</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- #endregion Menu-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Menu khi responsive mobile -->
+    <header>
+        <div class="main_header header_seven">
+            <div class="container">
+                <!--header middel start-->
+                <div class="header_middle sticky-header">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 col-md-3 col-4">
+                            <div class="logo">
+                                <a href="/Customers/Home/Index"><img src="~/Assets/Customers/img/logo/LogoViettelStore.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-12">
+                            <div class="main_menu menu_position text-center">
+                                <nav>
+                                    <ul>
+                                        <li><a class="active" href="~/Customers/Home/Index">Trang Chủ</a></li>
+                                        <li class="mega_items">
+                                            <a href="#">Sản Phẩm<i class="fa fa-angle-down"></i></a>
+                                            <div class="mega_menu">
+                                                <ul class="mega_menu_inner">
+
+                                                    <li>
+                                                        <a href="#">Điện Thoại</a>
+                                                        <ul>
+                                                            @Html.Action("DanhMucDienThoaiMenuPartial", "Home")
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Phụ Kiện</a>
+                                                        <ul>
+                                                            <li><a href="#"> Cập Nhật</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">lapTop</a>
+                                                        <ul>
+                                                            <li><a href="#">Dell</a></li>
+                                                            <li><a href="#">Macbook</a></li>
+                                                            <li><a href="#">HP</a></li>
+                                                            <li><a href="#">Sony</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Máy Tính Bảng</a>
+                                                        <ul>
+                                                            <li><a href="">Samsung</a></li>
+                                                            <li><a href="">Ipad</a></li>
+                                                            <li><a href="">Huewei</a></li>
+                                                            <li><a href="">Xiaomi</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Khác</a>
+                                                        <ul>
+                                                            <li><a href="#">Usb</a></li>
+                                                            <li><a href="#">Linh Kiện</a></li>
+                                                            <li><a href="#">Sạc Dự Phòng</a></li>
+                                                            <li><a href="#">Sạc Không Dây</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">Tin Tức<i class="fa fa-angle-down"></i></a>
+                                            <ul class="sub_menu pages">
+                                                <li><a href="#" onclick="alert('Chưa phát triển chức năng này')">Tin Khuyến Mãi</a></li>
+                                                <li><a href="#" onclick="alert('Chưa phát triển chức năng này')">Tin Công Nghệ</a></li>
+                                                <li><a href="#" onclick="alert('Chưa phát triển chức năng này')">Dịch Vụ</a></li>
+                                                <li><a href="#" onclick="alert('Chưa phát triển chức năng này')">Tuyển Dụng</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="~/Customers/ThongTin/ThongTin">Thông Tin</a></li>
+                                        <li><a href="~/Customers/ThongTin/LienHe"> Liên Hệ</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- #region Tài Khoản và giỏ hàng -->
+                        <div class="col-lg-3 col-md-7 col-6">
+                            <div class="header_configure_area">
+                                <!-- #region Account -->
+                                @if (Session["TaiKhoan"] == null)
+                                {
+                                    <div class="header_wishlist">
+                                        <a>
+                                            <i id="IconUser" class="fa fa-user-o"></i>
+                                            <span class="Ten">Tài Khoản</span>
+                                            <ul id="Sub">
+                                                <li><a href="~/Customers/DangNhap/DangNhap"> <i class="fa fa-sign-in"></i> Đăng Nhập</a></li>
+                                                <li><a href="~/Customers/DangNhap/DangKi"><i class="fa fa-user-plus"></i> Đăng Kí</a></li>
+                                            </ul>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    KhachHang kh = (KhachHang)Session["TaiKhoan"];
+                                    <div class="header_wishlist">
+                                        <a>
+                                            <i id="IconUser" class="fa fa-user"></i>
+                                            <span class="Ten">@kh.HoVaTen</span>
+                                            <ul id="Sub">
+                                                <li><a href="~/Customers/DangNhap/TaiKhoanCaNhan?TkKhachHang=@kh.TaiKhoanKH"><i class="fa fa-info"></i> Cá Nhân</a></li>
+                                                <li><a href="~/Customers/DangNhap/TaiKhoanCaNhan?TkKhachHang=@kh.TaiKhoanKH"><i class="fa fa-list-alt"></i> Đơn Hàng</a></li>
+                                                <li><a href="~/Customers/DangNhap/DangXuat"><i class="fa fa-sign-out"></i> Đăng Xuất</a></li>
+                                            </ul>
+                                        </a>
+                                    </div>
+                                }
+
+                                <!-- #endregion -->
+
+                                @Html.Action("GioHangPartial", "GioHang")
+                            </div>
+                        </div>
+
+                        <!-- #endregion Tài Khoản và giỏ hàng -->
+                    </div>
+                </div>
+                <!--header middel end-->
+                <!--mini cart-->
+                <div class="mini_cart">
+                    <div class="cart_close">
+                        <div class="cart_text">
+                            <h3>Giỏ Hàng</h3>
+                        </div>
+                        <div class="mini_cart_close">
+                            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                        </div>
+                    </div>
+                    @if (Session["GioHang"] != null)
+                    {@Html.Action("MiniCart", "GioHang")}
+                else
+                { <span>Giỏ hàng trống</span>}
+                </div>
+                <!--mini cart end-->
+                <!--header bottom satrt-->
+                <div class="header_bottom header_bottom7">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="categories_menu categories_seven">
+                                <div class="categories_title">
+                                    <h2 class="categori_toggle">DANH MỤC SẢN PHẨM</h2>
+                                </div>
+                                <div class="categories_menu_toggle">
+                                    <ul>
+                                        <li class="menu_item_children">
+                                            <a href="~/Customers/Home/DienThoaiAll">Điện Thoại <i class="fa fa-angle-right"></i></a>
+
+                                            <ul class="categories_mega_menu">
+                                                <li style="width:100%">
+                                                    <b>Điện thoại theo hãng</b> <br />
+                                                    @Html.Action("DanhMucDienThoaiPartial", "Home")
+
+                                                    <br />
+                                                    <b>Điện thoại theo giá</b> <br />
+                                                    <a href="~/Customers/SapXep/DienThoaiDuoi1Trieu" style="display:inline; margin: 0 5px 0px 5px">Dưới 1 triệu</a>|
+                                                    <a href="~/Customers/SapXep/DienThoaiTu1Den3Trieu" style="display:inline; margin: 0 5px 0px 5px">Từ 1 đến 3 triệu</a>|
+                                                    <a href="~/Customers/SapXep/DienThoaiTu3Den7Trieu" style="display:inline; margin: 0 5px 0px 5px">Từ 3 đến 7 triệu</a>|
+                                                    <a href="~/Customers/SapXep/DienThoaiTu7Den10Trieu" style="display:inline; margin: 0 5px 0px 5px">Từ 7 đến 10 triệu</a>|
+                                                    <a href="~/Customers/SapXep/DienThoaiTu10Den15Trieu" style="display:inline; margin: 0 5px 0px 5px">Từ 10 đến 15 triệu</a>|
+                                                    <a href="~/Customers/SapXep/DienThoaiTu15Den20Trieu" style="display:inline; margin: 0 5px 0px 5px">Từ 15 đến 20 triệu</a>|
+                                                    <a href="~/Customers/SapXep/DienThoaiTren20Trieu" style="display:inline; margin: 0 5px 0px 5px">Trên 20 triệu</a>|
+
+
+                                                </li>
+                                            </ul>
+
+                                        </li>
+                                        <li class="menu_item_children">
+                                            <a href="#"> Laptop <i class="fa fa-angle-right"></i></a>
+                                            <ul class="categories_mega_menu column_3">
+                                                <li class="menu_item_children">
+                                                    <a href="#">Văn Phòng</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children">
+                                                    <a href="#">ĐỒ Họa</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children">
+                                                    <a href="#">Chuyên Game</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu_item_children">
+                                            <a href="#"> Máy Tính Bảng <i class="fa fa-angle-right"></i></a>
+                                            <ul class="categories_mega_menu column_2">
+                                                <li class="menu_item_children">
+                                                    <a href="#">Theo Hãng</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển </a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children">
+                                                    <a href="#">Theo Giá Tiền</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Dưới 1 Triệu</a></li>
+                                                        <li><a href="#">Từ 2 Triệu Đến 6 Triệu</a></li>
+                                                        <li><a href="#">Từ 6 Triệu Đến 12 Triệu</a></li>
+                                                        <li><a href="#">Trên 12 Triệu </a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu_item_children">
+                                            <a href="#"> Đồng Hồ Thông Minh <i class="fa fa-angle-right"></i></a>
+                                            <ul class="categories_mega_menu column_2">
+                                                <li class="menu_item_children">
+                                                    <a href="#">Theo Hãng</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển </a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children">
+                                                    <a href="#">Theo Giá Tiền</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Dưới 1 Triệu</a></li>
+                                                        <li><a href="#">Từ 2 Triệu Đến 6 Triệu</a></li>
+                                                        <li><a href="#">Từ 6 Triệu Đến 12 Triệu</a></li>
+                                                        <li><a href="#">Trên 12 Triệu </a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu_item_children">
+                                            <a href="#"> Phụ Kiện <i class="fa fa-angle-right"></i></a>
+                                            <ul class="categories_mega_menu column_2">
+                                                <li class="menu_item_children">
+                                                    <a href="#">Check Trousers</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Building</a></li>
+                                                        <li><a href="#">Electronics</a></li>
+                                                        <li><a href="#">action figures </a></li>
+                                                        <li><a href="#">specialty & boutique toy</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children">
+                                                    <a href="#">Calculators</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Dolls for Girls</a></li>
+                                                        <li><a href="#">Girls' Learning Toys</a></li>
+                                                        <li><a href="#">Arts and Crafts for Girls</a></li>
+                                                        <li><a href="#">Video Games for Girls</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu_item_children">
+                                            <a href="#"> Thiết Bị Mạng <i class="fa fa-angle-right"></i></a>
+                                            <ul class="categories_mega_menu column_2">
+                                                <li class="menu_item_children">
+                                                    <a href="#">Theo Hãng</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                        <li><a href="#">Chưa Phát Triển </a></li>
+                                                        <li><a href="#">Chưa Phát Triển</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_item_children">
+                                                    <a href="#">Theo Giá Tiền</a>
+                                                    <ul class="categorie_sub_menu">
+                                                        <li><a href="#">Dưới 1 Triệu</a></li>
+                                                        <li><a href="#">Từ 2 Triệu Đến 6 Triệu</a></li>
+                                                        <li><a href="#">Từ 6 Triệu Đến 12 Triệu</a></li>
+                                                        <li><a href="#">Trên 12 Triệu </a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"> Thiết Bị Chăm Sóc Sức Khỏe</a></li>
+                                        <li><a href="#"> Máy Đọc Sách</a></li>
+                                        <li><a href="#"> Máy In</a></li>
+                                        <li class="hidden"><a href="#">Máy Chiếu</a></li>
+                                        <li class="hidden"><a href="#">Camera</a></li>
+                                        <li><a href="#" id="more-btn"><i class="fa fa-plus" aria-hidden="true"></i> Nhiều hơn</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #region Form Tìm Kiếm -->
+                        <div class=" col-lg-6 colm_none">
+                            <div class="search_container search_seven_c">
+
+                                @using (Html.BeginForm("TimKiem", "TimKiem"))
+                                {
+                                    <div class="hover_category">
+                                        <select class="select_option" name="loai">
+                                            <option value="1">Điện Thoại</option>
+                                            <option value="2">Phụ Kiện</option>
+                                            <option value="3">Giá Bán</option>
+                                            <option value="4">Dưới 1 Triệu</option>
+                                            <option value="5">Từ 1 Đến 3 Triệu</option>
+                                            <option value="6">Từ 3 Đến 7 Triệu</option>
+                                            <option value="7">Từ 7 Đến 10 Triệu</option>
+                                            <option value="8">Từ 10 Đến 15 Triệu</option>
+                                            <option value="9">Từ 15 Đến 20 Triệu</option>
+                                            <option value="10">Trên 20 Triệu</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="search_box">
+                                        <input placeholder="Tìm kiếm sản phẩm..." name="sTuKhoa" type="text" required>
+                                        <button type="submit">Tìm Kiếm</button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- #endregion -->
+                        <div class=" col-lg-3 col-md-6">
+                            <div class="header_bigsale">
+                                <a href="#" style="background-color: #c40316" onclick="alert('Chưa Phát Triển Chức Năng Này')">Tuần lễ giảm giá</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--header bottom end-->
+            </div>
+        </div>
+    </header>
+    <!--header area end-->
+    <!--slider area start-->
+    <section class="slider_section slider_s_seven mb-60 mt-20">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 offset-lg-3">
+                    <div class="slider_area slider3_carousel owl-carousel">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="/Assets/Customers/img/slider/slider20.jpg">
+                            <div class="slider_content slider_c_seven">
+                                <h3>Bộ Sưu Tập Mới</h3>
+                                <h1>Hàng mới về <br> điện thoại kiểu mới 2021</h1>
+                                <p>giảm <span> -30% </span> tuần này</p>
+                                <a class="button" href="~/Customers/Home/XemChiTiet?masanpham=7">XEM NGAY</a>
+                            </div>
+                        </div>
+                        <div class="single_slider d-flex align-items-center" data-bgimg="/Assets/Customers/img/slider/slider19.jpg">
+                            <div class="slider_content slider_c_seven">
+                                <h3>Bộ Sưu Tập Mới</h3>
+                                <h1>Chào Mùa hè <br> Giảm giá cực sốc</h1>
+                                <p>Giảm <span> -30% </span> tuần này</p>
+                                <a class="button" href="~/Customers/Home/XemChiTiet?masanpham=7">XEM NGAY</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- #region Nội dung chính -->
+    @RenderBody()
+    <!-- #endregion -->
+    <!--footer area start-->
+    <footer class="footer_widgets">
+        <!--newsletter area start-->
+        <div class="newsletter_area" style="display:none">
+            <div class="container">
+                <div class="newsletter_inner">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-5">
+                            <div class="newsletter_sing_up">
+                                <h3>Newsletter Sign Up</h3>
+                                <p>(Get <span>30% OFF</span> coupon today subscibers)</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-7">
+                            <div class="subscribe_content">
+                                <p><strong>Join 226.000+ subscribers</strong> and get a new discount coupon on every Monday.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-12">
+                            <div class="subscribe_form">
+                                <form id="mc-form" class="mc-form footer-newsletter">
+                                    <input id="mc-email" type="email" autocomplete="off" placeholder="Your email address..." />
+                                    <button id="mc-submit">Subscribe</button>
+                                </form>
+                                <!-- mailchimp-alerts Start -->
+                                <div class="mailchimp-alerts text-centre">
+                                    <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                    <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                                    <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                                </div><!-- mailchimp-alerts end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--newsletter area end-->
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-5 col-sm-7">
+                        <div class="widgets_container contact_us">
+                            <h3>Tải ứng dụng cho điện thoại</h3>
+                            <div class="aff_content">
+                                <p>Ứng dụng <strong>Ecommerce</strong> hiện đã có trên Google Play & App Store.</p>
+                            </div>
+                            <div class="app_img">
+                                <figure class="app_img">
+                                    <a href="#"><img src="~/Assets/Customers/img/icon/icon-appstore.png" alt=""></a>
+                                </figure>
+                                <figure class="app_img">
+                                    <a href="#"><img src="~/Assets/Customers/img/icon/icon-googleplay.png" alt=""></a>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-5">
+                        <div class="widgets_container widget_menu">
+                            <h3>Chính Sách bán Hàng</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="~/Customers/ThongTin/ThongTin">Chính Sách Bảo Hành</a></li>
+                                    <li><a href="~/Customers/ThongTin/ThongTin">Chính Sách Đổi Trả</a></li>
+                                    <li><a href="~/Customers/ThongTin/ThongTin">Chính Sách Giao Hàng</a></li>
+                                    <li><a href="~/Customers/ThongTin/ThongTin">Chính Sách Bảo Mật</a></li>
+                                    <li><a href="~/Customers/ThongTin/ThongTin">Hướng Dẫn Đặt Hàng</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-5 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>Dịch Vụ</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="#">Tra Cứu Hóa Đơn</a></li>
+                                    <li><a href="my-account.html">Hướng Dẫn Đặt Hàng</a></li>
+                                    <li><a href="#">Tin Tuyển Dụng</a></li>
+                                    <li><a href="#">Quy Chế Hoạt Động</a></li>
+                                    <li><a href="#">Của Hàng Gần Nhất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-6">
+                        <div class="widgets_container widget_menu">
+                            <h3>Tài Khoản Của Bạn</h3>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li><a href="my-account.html">Tài Khoản</a></li>
+                                    <li><a href="cart.html">Giỏ Hàng</a></li>
+                                    <li><a href="wishlist.html">Sản Phẩm Yêu Thích</a></li>
+                                    <li><a href="#">Lịch Sử Giảm Giá</a></li>
+                                    <li><a href="#">Lịch Sử Mua Hàng</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-7 col-sm-12">
+                        <div class="widgets_container">
+                            <h3>Thông Tin Liên Lạc</h3>
+                            <div class="footer_contact">
+                                <div class="footer_contact_inner">
+                                    <div class="contact_icone">
+                                        <img src="~/Assets/Customers/img/icon/icon-phone.png" alt="">
+                                    </div>
+                                    <div class="contact_text">
+                                        <p>Hotline Free 24/24: <br> <strong>0971010282</strong></p>
+                                    </div>
+                                </div>
+                                <p>Địa chỉ email: <br> CSKHViettelStore@gmail.com</p>
+                            </div>
+
+                            <div class="footer_social">
+                                <ul>
+                                    <li><a class="facebook" href="https://www.facebook.com/yen.buithihoang"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer area end-->
+    <!-- JS
+    ============================================ -->
+    <!-- Plugins JS -->
+    <script src="~/Assets/Customers/js/plugins.js"></script>
+    <!-- Main JS -->
+    <script src="~/Assets/Customers/js/main.js"></script>
+</body>
+</html>

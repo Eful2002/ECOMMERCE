@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Areas/Customers/Views/Shared/_LayoutDetails.cshtml";
+}
+
+<!-- #region Login and regist -->
+<div class="login_page_bg">
+    <div class="container">
+        <div class="customer_login">
+            <div class="row">
+                <!--login area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form login">
+                        <h2>ĐĂNG NHẬP</h2>
+                        <div>
+                            @using (Ajax.BeginForm("DangNhap", "DangNhap", new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }))
+                            {
+                                <p>
+                                    <label>Tên Đăng Nhập <span>*</span></label>
+                                    <input type="text" placeholder="Tên đăng nhập" name="txtTaiKhoan">
+                                </p>
+                                <p>
+                                    <label>Mật Khẩu <span>*</span></label>
+                                    <input type="password" placeholder="***" name="txtMatKhau">
+                                </p>
+                                <div class="ThongBao" id="ThongBao">
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                                </div>
+                                <div class="login_submit" id="ThongBao">
+                                    @*<a class="ThongBao" id="ThongBao">
+                                        Lost your password?
+                                    </a>*@
+                                    <button type="submit">Đăng Nhập</button>
+
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--login area start-->
+                <!--Đăng Kí area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
+                        <h2>ĐĂNG KÍ</h2>
+                        <div class="row">
+                            @using (Html.BeginForm("DangKi", "DangNhap"))
+                            {
+                                <div class="col-12 mb-20">
+                                    <label>Họ và tên <span>*</span></label>
+                                    <input type="text" placeholder="Nguyễn Văn A" name="txtHoVaTen">
+                                </div>
+                                <div class="col-lg-6 mb-20" style="float: left">
+                                    <label>Tên Đăng Nhập <span>*</span></label>
+                                    <input type="text" placeholder="NguyenVanA ..." name="txtTenDangNhap">
+                                </div>
+                                <div class="col-lg-6 mb-20" style="float:left">
+                                    <label>Mật Khẩu <span>*</span></label>
+                                    <input type="password" placeholder="*** " name="txtMatKhau">
+                                </div>
+
+                                <div class="col-6 mb-20" style="float: left">
+                                    <label for="country" style="float: left">Giới Tính <span>*</span></label>
+                                    <select class="niceselect_option" id="GioiTinh" name="txtgioiTinh">
+                                        <option value="0">Nam</option>
+                                        <option value="1">Nữ</option>
+                                    </select>
+                                </div>
+
+                                <p class="col-6 mb-20" style="float: left">
+                                    <label>Email <span>*</span></label>
+                                    <input placeholder="abc@gmail.com" type="email" name="txtEmail">
+                                </p>
+                                <p class="col-6 mb-20" style="float: left">
+                                    <label>Địa Chỉ <span>*</span></label>
+                                    <input type="text" placeholder="Hà Nội" name="txtDiaChi">
+                                </p>
+                                <p class="col-6 mb-20" style="float: left">
+                                    <label>Số Điện Thoại <span>*</span></label>
+                                    <input type="text" placeholder="0123456789" name="txtSDT">
+                                </p>
+                                <div class="login_submit">
+                                    <button type="submit">Đăng Kí</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!--register area end-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion -->

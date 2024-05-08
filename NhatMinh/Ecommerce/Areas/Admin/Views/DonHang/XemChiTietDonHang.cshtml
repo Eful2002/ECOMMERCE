@@ -1,0 +1,221 @@
+﻿@using Ecommerce.Models
+@model DonHang
+@{
+    ViewBag.Title = "Chi Tiết Đơn Hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="title-block">
+    <h1 class="title"> Chi Tiết Đơn Hàng </h1>
+</div>
+@{IEnumerable<ChiTietDonHang> lstChiTietDH = (IEnumerable<ChiTietDonHang>)ViewBag.listchitietdonhang;}
+<div>
+    <section class="section">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-block">
+                        <div class="card-title-block">
+                            <div class="col-lg-4">
+                                <label>Tên Người Nhận: @Model.TenNguoiNhan</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Ngày Đặt: @Model.NgayDat</label>
+                            </div>
+                            <div class="col-lg-4">
+                                @switch (Model.TrangThai)
+                                {
+                                    case 0:
+                                        <label>Trạng Thái: <b>Chờ Xác Nhận</b></label>
+                                        break;
+                                    case 1:
+                                        <label>Trạng Thái: <b>Đang Giao</b></label>
+                                        break;
+                                    case 2:
+                                        <label>Trạng Thái: <b>Đã Giao</b></label>
+                                        break;
+                                    case 4:
+                                        <label>Trạng Thái: <b>Đã Hủy</b></label>
+                                        break;
+                                    default:
+                                        <label>Trạng Thái: <b>Chờ Xử Lý</b></label>
+                                        break;
+                                }
+                            </div>
+                            <div class="col-lg-12">
+                                Địa Chỉ Giao Hàng: @Model.SDT | ĐC: @Model.DiaChi, @Model.ThanhPho, @Model.Quan, @Model.Phuong
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+                        <section class="example">
+                            <div class="table-flip-scroll">
+                                <table class="table table-striped table-bordered table-hover flip-content">
+                                    <thead class="flip-header">
+                                        <tr>
+                                            <th>Mã Sản Phẩm</th>
+                                            <th>Tên Sản Phẩm</th>
+                                            <th>Ảnh</th>
+                                            <th>Thông Số</th>
+                                            <th>Số Lượng</th>
+                                            <th>Thành Tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in lstChiTietDH)
+                                        {
+                                            <tr class="even gradeC">
+                                                <td>@item.MaSanPham</td>
+                                                <td>@item.SanPham.TenSanPham</td>
+                                                <td><img src="~/Assets/Customers/img/HinhAnhSanPham/@item.SanPham.AnhBia" alt="@item.SanPham.TenSanPham" height="120" width="100"></td>
+                                                @switch (item.MaMauSac)
+                                                {
+                                                    case 1:
+                                                        <td>Black - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 2:
+                                                        <td>Silver - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 3:
+                                                        <td>Gold - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 4:
+                                                        <td>Red - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 5:
+                                                        <td>Green - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 6:
+                                                        <td>Blue - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 7:
+                                                        <td>While - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 8:
+                                                        <td>Rose Gold - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 9:
+                                                        <td>Violet - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 10:
+                                                        <td>Colorful - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    case 11:
+                                                        <td>color unknown - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                    default:
+                                                        <td>color unknown - @item.Rom/@item.Ram</td>
+                                                        break;
+                                                }
+                                                <td>@item.SoLuongMua</td>
+                                                <td>@String.Format("{0:0,0}", item.ThanhTien) vnđ</td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td colspan="4"></td>
+                                            <td><b>Tổng SL: @Model.ChiTietDonHang.Sum(n => n.SoLuongMua)</b></td>
+                                            <td><b>Tổng Tiền: @String.Format("{0:0,0}", Model.ChiTietDonHang.Sum(n => n.ThanhTien)) vnđ</b></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                @*   @Html.PagedListPager(Model, page => Url.Action("Index", "Home", new { page }))*@
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- #region In -->
+<div id="print" style="display:none">
+    <table style="border-collapse: collapse">
+        <tr>
+            <th width="20%">Người Gửi</th>
+            <th width="20%">Người Nhận</th>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #000000">
+                Ecommerce <br />
+                SDT: 0972222222 <br />
+                ĐC: 12/2 Bạch Đằng, Hoàng Mai, Hà Nội
+            </td>
+            <td style="border: 1px solid #000000">
+                @Model.TenNguoiNhan <br />
+                SDT: @Model.SDT <br />
+                ĐC: @Model.DiaChi, @Model.Phuong, @Model.Quan, @Model.ThanhPho
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #000000">
+                @foreach (var item in lstChiTietDH)
+                {
+                    <span>@item.SanPham.TenSanPham;</span>
+                    <span>
+                        @switch (item.MaMauSac)
+                        {
+                            case 1:
+                                <span>Black - @item.Rom/@item.Ram</span>
+                                break;
+                            case 2:
+                                <span>Silver - @item.Rom/@item.Ram</span>
+                                break;
+                            case 3:
+                                <span>Gold - @item.Rom/@item.Ram</span>
+                                break;
+                            case 4:
+                                <span>Red - @item.Rom/@item.Ram</span>
+                                break;
+                            case 5:
+                                <span>Green - @item.Rom/@item.Ram</span>
+                                break;
+                            case 6:
+                                <span>Blue - @item.Rom/@item.Ram</span>
+                                break;
+                            case 7:
+                                <span>While - @item.Rom/@item.Ram</span>
+                                break;
+                            case 8:
+                                <span>Rose Gold - @item.Rom/@item.Ram</span>
+                                break;
+                            case 9:
+                                <span>Violet - @item.Rom/@item.Ram</span>
+                                break;
+                            case 10:
+                                <span>Colorful - @item.Rom/@item.Ram</span>
+                                break;
+                            case 11:
+                                <span>color unknown - @item.Rom/@item.Ram</span>
+                                break;
+                            default:
+                                <span>color unknown - @item.Rom/@item.Ram</span>
+                                break;
+                        };
+                    </span>
+                    <span> SL: @item.SoLuongMua;</span>
+                    <span>Thành Tiền: @String.Format("{0:0,0}", item.ThanhTien) vnđ</span>
+
+
+                    <br />
+                }
+            </td>
+            <td style="border: 1px solid #000000">
+                Tổng tiền khách cần thanh toán<br /> <b>@String.Format("{0:0,0}", Model.ChiTietDonHang.Sum(n => n.ThanhTien)) vnđ</b>
+            </td>
+        </tr>
+    </table>
+</div>
+<a href="~/Admin/DonHang/DonHangAll" class="btn btn-primary"> Trở Về </a>
+<button type="button" onclick="printDiv('print')" class="btn btn-success">In Trang</button>
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>
+
+<!-- #endregion -->

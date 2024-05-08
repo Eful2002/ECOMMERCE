@@ -1,0 +1,1856 @@
+﻿@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Areas/Customers/Views/Shared/_layoutCustomer.cshtml";
+}
+<!-- #region Phần nội dung -->
+<!--home section bg area start-->
+<div class="home_section_bg">
+    <!--product area start-->
+    <div class="product_area deals_product">
+        <div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product_header">
+                            <div class="section_title s_title_style3">
+                                <h2>Sản Phẩm Mới</h2>
+
+                            </div>
+                            <div class="product_tab_btn">
+                                <ul class="nav" role="tablist" id="nav-tab">
+                                    <li>
+                                        <a class="active" data-toggle="tab" href="#Fashion" role="tab" aria-controls="Fashion" aria-selected="true">
+                                            Điện Thoại
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#Mobile" role="tab" aria-controls="Mobile" aria-selected="false">
+                                            Phụ Kiện
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="Fashion" role="tabpanel">
+                        <div class="product_carousel product_style product_column5 owl-carousel">
+                            @Html.Action("DienThoaiPartialView", "Home")
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="Mobile" role="tabpanel">
+                        <div class="product_carousel product_style product_column5 owl-carousel">
+                            @Html.Action("PhuKienPartialView", "Home")
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- #region Sản Phẩm List -->
+    <div class="shop_area shop_fullwidth" style="padding-top: 20px">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    @Html.Action("SanPhamPartialView", "Home")
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!--product area end-->
+        <!--product area start-->
+        <!--product area end-->
+        <!-- #region Tổng Sản Phẩm Theo Loại -->
+        <div class="categories_product_area mb-55">
+            <div class="container">
+                <div class="categories_product_inner">
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Điện thoại</a></h4>
+                            <p>@ViewBag.CountDienThoai Sản phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category1.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Phụ Kiện</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category6.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Máy Tính</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category2.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Đồng Hồ Thông Minhs</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category3.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Phụ Kiện</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category4.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Hỗ Trợ</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category5.jpg" alt=""></a>
+                        </div>
+                    </div>
+
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Ghế</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category7.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Tivi</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category8.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Máy Đọc Sách</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category9.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single_categories_product">
+                        <div class="categories_product_content">
+                            <h4><a href="shop.html"> Đồ Công Nghệ</a></h4>
+                            <p>0 Sản Phẩm</p>
+                        </div>
+                        <div class="categories_product_thumb">
+                            <a href="shop.html"><img src="~/Assets/Customers/img/s-product/category10.jpg" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion -->
+        <!--product area start-->
+        <div class="product_area" style="display:none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product_header">
+                            <div class="section_title s_title_style3">
+                                <h2>Featured Products</h2>
+
+                            </div>
+                            <div class="product_tab_btn">
+                                <ul class="nav" role="tablist" id="nav-tab3">
+                                    <li>
+                                        <a class="active" data-toggle="tab" href="#Computer3" role="tab" aria-controls="Computer3" aria-selected="true">
+                                            Computer
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#Networking2" role="tab" aria-controls="Networking2" aria-selected="false">
+                                            Networking
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#Networking3" role="tab" aria-controls="Networking3" aria-selected="false">
+                                            Computer & Networking
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#Audio2" role="tab" aria-controls="Audio2" aria-selected="false">
+                                            Television & Audio
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="Computer3" role="tabpanel">
+                        <div class="product_carousel product_style product_column5 owl-carousel">
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product16.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product17.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Natus erro at congue massa commodo sit Natus erro</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$80.00</span>
+                                                <span class="current_price">$70.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product14.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product15.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Nullam maximus eget nisi dignissim sodales eget tempor</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$76.00</span>
+                                                <span class="current_price">$75.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product12.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product13.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Eodem modo vel mattis ante facilisis nec porttitor efficitur</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product10.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product11.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Donec tempus pretium arcu et faucibus commodo</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$75.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product8.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product9.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$70.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product6.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product7.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$65.00</span>
+                                                <span class="current_price">$60.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="Networking2" role="tabpanel">
+                        <div class="product_carousel product_style product_column5 owl-carousel">
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product3.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product2.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Natus erro at congue massa commodo sit Natus erro</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$80.00</span>
+                                                <span class="current_price">$70.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product7.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product8.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Nullam maximus eget nisi dignissim sodales eget tempor</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$76.00</span>
+                                                <span class="current_price">$75.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product9.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product10.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$70.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product11.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product12.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$65.00</span>
+                                                <span class="current_price">$60.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product2.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Eodem modo vel mattis ante facilisis nec porttitor efficitur</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product3.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product4.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Donec tempus pretium arcu et faucibus commodo</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$75.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="Networking3" role="tabpanel">
+                        <div class="product_carousel product_style product_column5 owl-carousel">
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product7.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product8.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Nullam maximus eget nisi dignissim sodales eget tempor</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$76.00</span>
+                                                <span class="current_price">$75.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product2.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Eodem modo vel mattis ante facilisis nec porttitor efficitur</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product3.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product4.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Donec tempus pretium arcu et faucibus commodo</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$75.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product5.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product6.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Natus erro at congue massa commodo sit Natus erro</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$80.00</span>
+                                                <span class="current_price">$70.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product9.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product10.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$70.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product11.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product12.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$65.00</span>
+                                                <span class="current_price">$60.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="Audio2" role="tabpanel">
+                        <div class="product_carousel product_style product_column5 owl-carousel">
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product9.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product10.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$70.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product2.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Eodem modo vel mattis ante facilisis nec porttitor efficitur</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product5.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product6.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Natus erro at congue massa commodo sit Natus erro</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$80.00</span>
+                                                <span class="current_price">$70.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product7.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product8.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Nullam maximus eget nisi dignissim sodales eget tempor</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$76.00</span>
+                                                <span class="current_price">$75.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product3.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product4.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Donec tempus pretium arcu et faucibus commodo</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$75.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                            <article class="single_product">
+                                <figure>
+
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product11.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product12.jpg" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">Sale</span>
+                                        </div>
+                                        <div class="action_links">
+                                            <ul>
+                                                <li class="wishlist"><a href="wishlist.html" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Wishlist"><i class="ion-android-favorite-outline"></i></a></li>
+                                                <li class="compare"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-tippy="Add to Compare"><i class="ion-ios-settings-strong"></i></a></li>
+                                                <li class="quick_button"><a href="#" data-tippy-placement="top" data-tippy-arrow="true" data-tippy-inertia="true" data-bs-toggle="modal" data-bs-target="#modal_box" data-tippy="quick view"><i class="ion-ios-search-strong"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product_content">
+                                        <div class="product_content_inner">
+                                            <h4 class="product_name"><a href="product-details.html">Mirum est notare tellus eu nibh iaculis pretium</a></h4>
+                                            <div class="price_box">
+                                                <span class="old_price">$65.00</span>
+                                                <span class="current_price">$60.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="Add to cart">Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </figure>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--product area end-->
+        <!--product area start-->
+        <div class="small_product_area small_product_style2 small_product7 mb-60" style="display:none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="small_product_list">
+                            <div class="section_title s_title_style3">
+                                <h2>Computer & Networking</h2>
+                            </div>
+                            <div class="product_carousel small_p_container  product_column1 owl-carousel">
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product1.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product2.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium posuere maximus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product3.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product4.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Aliquam lobortis pellentesque eugiat pretium nisi lectus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product5.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product6.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product9.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product10.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium posuere maximus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product11.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product12.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Aliquam lobortis pellentesque eugiat pretium nisi lectus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product13.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product14.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product1.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product2.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium posuere maximus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product3.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product4.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Aliquam lobortis pellentesque eugiat pretium nisi lectus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product5.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product6.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="small_product_list">
+                            <div class="section_title s_title_style3">
+                                <h2>Games & Consoles</h2>
+                            </div>
+                            <div class="product_carousel small_p_container  product_column1 owl-carousel">
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product7.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product8.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Eodem modo vel mattis ante facilisis nec porttitor efficitur</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product9.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product10.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Nostrum exercitationem itae neque nulla nec posuere sem</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product11.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product12.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product9.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product10.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium posuere maximus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product11.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product12.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Aliquam lobortis pellentesque eugiat pretium nisi lectus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product13.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product14.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product7.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product8.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Eodem modo vel mattis ante facilisis nec porttitor efficitur</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product9.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product10.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Nostrum exercitationem itae neque nulla nec posuere sem</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product11.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product12.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="small_product_list">
+                            <div class="section_title s_title_style3">
+                                <h2>Mobile & Tablets</h2>
+                            </div>
+                            <div class="product_carousel small_p_container  product_column1 owl-carousel">
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product13.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product14.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium posuere maximus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product15.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product16.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Aliquam lobortis pellentesque eugiat pretium nisi lectus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product17.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product18.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product19.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product20.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium posuere maximus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product1.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product2.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Aliquam lobortis pellentesque eugiat pretium nisi lectus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product3.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product4.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="product_items">
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product13.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product14.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Porro quisquam eget feugiat pretium posuere maximus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$82.00</span>
+                                                <span class="current_price">$78.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product15.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product16.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Aliquam lobortis pellentesque eugiat pretium nisi lectus</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$72.00</span>
+                                                <span class="current_price">$68.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                    <figure class="single_product">
+                                        <div class="product_thumb">
+                                            <a class="primary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product17.jpg" alt=""></a>
+                                            <a class="secondary_img" href="product-details.html"><img src="~/Assets/Customers/img/product/product18.jpg" alt=""></a>
+                                        </div>
+                                        <div class="product_content">
+                                            <h4 class="product_name"><a href="product-details.html">Officiis debitis varius risus dignissim massa quis</a></h4>
+                                            <div class="product_rating">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                    <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="old_price">$86.00</span>
+                                                <span class="current_price">$79.00</span>
+                                            </div>
+                                            <div class="product_cart_button">
+                                                <a href="cart.html" title="Add to cart"><i class="fa fa-shopping-bag"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--product area end-->
+        <!--blog area start-->
+        <div class="blog_area" style="display:none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section_title s_title_style3">
+                            <h2>Bài Viết</h2>
+                        </div>
+                        <div class="blog_container blog_column4 owl-carousel">
+                            <article class="single_blog">
+                                <figure>
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="~/Assets/Customers/img/blog/blog1.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="blog_content">
+                                        <h4><a href="blog-details.html">Post with Gallery</a></h4>
+                                        <div class="post_meta">
+                                            <p>By <a href="#">admin</a> Date <a href="#">April 24, 2018</a></p>
+                                        </div>
+                                        <div class="post_desc">
+                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
+                                        </div>
+                                        <footer class="post_readmore">
+                                            <a href="#">Read more</a>
+                                        </footer>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_blog">
+                                <figure>
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="~/Assets/Customers/img/blog/blog2.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="blog_content">
+                                        <h4><a href="blog-details.html">Post with Gallery</a></h4>
+                                        <div class="post_meta">
+                                            <p>By <a href="#">admin</a> Date <a href="#">April 24, 2018</a></p>
+                                        </div>
+                                        <div class="post_desc">
+                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
+                                        </div>
+                                        <footer class="post_readmore">
+                                            <a href="#">Read more</a>
+                                        </footer>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_blog">
+                                <figure>
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="~/Assets/Customers/img/blog/blog3.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="blog_content">
+                                        <h4><a href="blog-details.html">Post with Gallery</a></h4>
+                                        <div class="post_meta">
+                                            <p>By <a href="#">admin</a> Date <a href="#">April 24, 2018</a></p>
+                                        </div>
+                                        <div class="post_desc">
+                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
+                                        </div>
+                                        <footer class="post_readmore">
+                                            <a href="#">Read more</a>
+                                        </footer>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_blog">
+                                <figure>
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="~/Assets/Customers/img/blog/blog4.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="blog_content">
+                                        <h4><a href="blog-details.html">Post with Gallery</a></h4>
+                                        <div class="post_meta">
+                                            <p>By <a href="#">admin</a> Date <a href="#">April 24, 2018</a></p>
+                                        </div>
+                                        <div class="post_desc">
+                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
+                                        </div>
+                                        <footer class="post_readmore">
+                                            <a href="#">Read more</a>
+                                        </footer>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                            <article class="single_blog">
+                                <figure>
+                                    <div class="blog_thumb">
+                                        <a href="blog-details.html"><img src="~/Assets/Customers/img/blog/blog2.jpg" alt=""></a>
+                                    </div>
+                                    <figcaption class="blog_content">
+                                        <h4><a href="blog-details.html">Post with Gallery</a></h4>
+                                        <div class="post_meta">
+                                            <p>By <a href="#">admin</a> Date <a href="#">April 24, 2018</a></p>
+                                        </div>
+                                        <div class="post_desc">
+                                            <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent</p>
+                                        </div>
+                                        <footer class="post_readmore">
+                                            <a href="#">Read more</a>
+                                        </footer>
+                                    </figcaption>
+                                </figure>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--blog area end-->
+        <br />
+    </div>
+</div>
+<!--home section bg area end-->
+<!-- #endregion -->
