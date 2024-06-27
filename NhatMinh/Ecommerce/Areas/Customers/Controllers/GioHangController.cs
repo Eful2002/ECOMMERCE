@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -188,70 +189,6 @@ namespace Ecommerce.Areas.Customers.Controllers
         }
         #endregion
 
-        #region Đặt hàng
-        //Xây dựng chức năng đặt hàng
-        [HttpPost]
-        public ActionResult DatHang(FormCollection f)
-        {
-            string tennguoinhan = f["txtTenNguoiNhan"].ToString();
-            string diachi = f["txtDiaChi"].ToString();
-            string sdt = f["txtSDT"].ToString();
-            string thanhpho = f["province"].ToString();
-            string quan = f["district"].ToString();
-            string phuong = f["ward"].ToString();
-            //Kiểm tra đăng đăng nhập
-            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
-            {
-                return RedirectToAction("DangNhap", "DangNhap");
-            }
-            //Kiểm tra giỏ hàng
-            if (Session["GioHang"] == null)
-            {
-                RedirectToAction("Index", "Home");
-            }
-            //Thêm đơn hàng
-            DonHang dh = new DonHang();
-            //KhachHang kh = (KhachHang)Session["TaiKhoan"];
-            List<GioHang> gh = LayGioHang();
-            KhachHang kh = (KhachHang)Session["TaiKhoan"];
-            dh.TaiKhoanKH = kh.TaiKhoanKH;
-            dh.TenNguoiNhan = tennguoinhan;
-            dh.NgayDat = DateTime.Now;
-            dh.DiaChi = diachi;
-            dh.SDT = sdt;
-            dh.ThanhPho = thanhpho;
-            dh.Quan = quan;
-            dh.Phuong = phuong;
-            dh.NgayGiao = null;
-            dh.TongTien = (decimal)TongTien();
-            dh.TrangThai = 0;
-            db.DonHang.Add(dh);
-            db.SaveChanges();
-            //Thêm chi tiết đơn hàng
-            foreach (var item in gh)
-            {
-                ChiTietDonHang ctDH = new ChiTietDonHang();
-                ctDH.MaDonHang = dh.MaDonHang;
-                ctDH.MaSanPham = item.iMaSanPham;
-                ctDH.MaMauSac = item.iMaMauSac;
-                ctDH.Rom = item.iRom;
-                ctDH.Ram = item.iRam;
-                ctDH.SoLuongMua = item.iSoLuong;
-                ctDH.ThanhTien = (Decimal)item.dDonGia;
-                #region Trừ số lượng mua
-                ChiTietSP sp = db.ChiTietSP.SingleOrDefault(n => n.MaSanPham == item.iMaSanPham && n.MaMauSac == item.iMaMauSac && n.Rom == item.iRom && n.Ram == item.iRam);
-                sp.SoLuong -= ctDH.SoLuongMua;
-                sp.SoLuongDaBan += ctDH.SoLuongMua;
-                #endregion
-
-                db.ChiTietDonHang.Add(ctDH);
-            }
-            db.SaveChanges();
-            Session["GioHang"] = null;
-            return RedirectToAction("DatHangThanhCong", "Error");
-        }
-        #endregion
-
         #region Xem Giỏ Hàng sau khi mua
 
         [HttpGet]
@@ -359,6 +296,216 @@ namespace Ecommerce.Areas.Customers.Controllers
             var lstchitietdh = db.ChiTietDonHang.Where(n => n.MaDonHang == iMaDonHang);
             ViewBag.listchitietdonhang = lstchitietdh;
             return View(model);
+        }
+        #endregion
+
+        #region Đặt hàng
+        //Xây dựng chức năng đặt hàng
+        [HttpPost]
+        public ActionResult DatHang(FormCollection f)
+        {
+            string tienMat = Convert.ToString(f["TienMat"]);
+            // Thanh toán bằng tiền mặt
+            if (!string.IsNullOrEmpty(tienMat))
+            {
+                string tennguoinhan = f["txtTenNguoiNhan"].ToString();
+                string diachi = f["txtDiaChi"].ToString();
+                string sdt = f["txtSDT"].ToString();
+                string thanhpho = f["province"].ToString();
+                string quan = f["district"].ToString();
+                string phuong = f["ward"].ToString();
+                //Kiểm tra đăng đăng nhập
+                if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+                {
+                    return RedirectToAction("DangNhap", "DangNhap");
+                }
+                //Kiểm tra giỏ hàng
+                if (Session["GioHang"] == null)
+                {
+                    RedirectToAction("Index", "Home");
+                }
+                //Thêm đơn hàng
+                DonHang dh = new DonHang();
+                //KhachHang kh = (KhachHang)Session["TaiKhoan"];
+                List<GioHang> gh = LayGioHang();
+                KhachHang kh = (KhachHang)Session["TaiKhoan"];
+                dh.TaiKhoanKH = kh.TaiKhoanKH;
+                dh.TenNguoiNhan = tennguoinhan;
+                dh.NgayDat = DateTime.Now;
+                dh.DiaChi = diachi;
+                dh.SDT = sdt;
+                dh.ThanhPho = thanhpho;
+                dh.Quan = quan;
+                dh.Phuong = phuong;
+                dh.NgayGiao = null;
+                dh.TongTien = (decimal)TongTien();
+                dh.TrangThai = 0;
+                dh.TrangThaiThanhToan = 0;
+                db.DonHang.Add(dh);
+                db.SaveChanges();
+                //Thêm chi tiết đơn hàng
+                foreach (var item in gh)
+                {
+                    ChiTietDonHang ctDH = new ChiTietDonHang();
+                    ctDH.MaDonHang = dh.MaDonHang;
+                    ctDH.MaSanPham = item.iMaSanPham;
+                    ctDH.MaMauSac = item.iMaMauSac;
+                    ctDH.Rom = item.iRom;
+                    ctDH.Ram = item.iRam;
+                    ctDH.SoLuongMua = item.iSoLuong;
+                    ctDH.ThanhTien = (Decimal)item.dDonGia;
+                    #region Trừ số lượng mua
+                    ChiTietSP sp = db.ChiTietSP.SingleOrDefault(n => n.MaSanPham == item.iMaSanPham && n.MaMauSac == item.iMaMauSac && n.Rom == item.iRom && n.Ram == item.iRam);
+                    sp.SoLuong -= ctDH.SoLuongMua;
+                    sp.SoLuongDaBan += ctDH.SoLuongMua;
+                    #endregion
+
+                    db.ChiTietDonHang.Add(ctDH);
+                }
+                db.SaveChanges();
+                Session["GioHang"] = null;
+                return RedirectToAction("DatHangThanhCong", "Error");
+            }
+            // Thanh toán bằng VNPAY
+            else
+            {
+                string tennguoinhan = f["txtTenNguoiNhan"].ToString();
+                string diachi = f["txtDiaChi"].ToString();
+                string sdt = f["txtSDT"].ToString();
+                string thanhpho = f["province"].ToString();
+                string quan = f["district"].ToString();
+                string phuong = f["ward"].ToString();
+
+                // Kiểm tra đăng nhập
+                if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+                {
+                    return RedirectToAction("DangNhap", "DangNhap");
+                }
+
+                // Kiểm tra giỏ hàng
+                if (Session["GioHang"] == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                // Thêm đơn hàng vào cơ sở dữ liệu
+                DonHang dh = new DonHang();
+                List<GioHang> gh = LayGioHang();
+                KhachHang kh = (KhachHang)Session["TaiKhoan"];
+
+                dh.TaiKhoanKH = kh.TaiKhoanKH;
+                dh.TenNguoiNhan = tennguoinhan;
+                dh.NgayDat = DateTime.Now;
+                dh.DiaChi = diachi;
+                dh.SDT = sdt;
+                dh.ThanhPho = thanhpho;
+                dh.Quan = quan;
+                dh.Phuong = phuong;
+                dh.NgayGiao = null;
+                dh.TongTien = (decimal)TongTien();
+                dh.TrangThai = 0;
+                dh.TrangThaiThanhToan = 1;
+
+                db.DonHang.Add(dh);
+                db.SaveChanges();
+
+                // Thực hiện thanh toán bằng VNPAY
+                return RedirectToVNPay(dh.MaDonHang);
+            }
+        }
+        #endregion
+
+
+        #region Thanh Toán VNPAY
+        private ActionResult RedirectToVNPay(int maDonHang)
+        {
+            // Khai Baos biến
+            string vnp_TmnCode = "RA2GQHLS"; // Mã website tại VNPAY 
+            string vnp_HashSecret = "4NIXE4VBUB6AYAO1NHMTC9CGEIGM94A4"; // Chuỗi bí mật
+            string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; // URL thanh toán
+
+            // Chuẩn bị dữ liệu thanh toán
+            //string vnp_Returnurl = Url.Action("PaymentReturn", "Payment", null, protocol: Request.Url.Scheme); // URL nhận kết quả thanh toán
+            string vnp_Returnurl = "https://localhost:44375/vnpay_return"; // URL nhận kết quả thanh toán
+            string vnp_TxnRef = maDonHang.ToString(); // Mã giao dịch thanh toán là mã đơn hàng
+            string vnp_OrderInfo = "Don Hang " + maDonHang.ToString(); // Thông tin giao dịch
+            string vnp_Amount = (100000 * 100).ToString(); // Số tiền cần thanh toán, phải là số nguyên không dấu và nhỏ hơn 18 chữ số
+
+            // Xây dựng dữ liệu gửi đến VNPAY
+            Dictionary<string, string> vnpayData = new Dictionary<string, string>();
+            vnpayData.Add("vnp_Version", "2.1.0");
+            vnpayData.Add("vnp_Command", "pay");
+            vnpayData.Add("vnp_TmnCode", vnp_TmnCode);
+            vnpayData.Add("vnp_Amount", vnp_Amount);
+
+            DateTime currentTime = DateTime.Now;
+            vnpayData.Add("vnp_CreateDate", currentTime.ToString("yyyyMMddHHmmss"));
+
+            vnpayData.Add("vnp_CurrCode", "VND");
+
+            string ipAddress = "";
+
+            // Kiểm tra nếu đang chạy trên localhost
+            if (!Request.IsLocal)
+            {
+                ipAddress = Request.ServerVariables["REMOTE_ADDR"];
+            }
+            else
+            {
+                ipAddress = Request.ServerVariables["LOCAL_ADDR"];
+                // Nếu không phải localhost, xử lý như bình thường
+            }
+
+            // Nếu ipAddress vẫn là rỗng, có thể fallback vào 127.0.0.1 hoặc giá trị mặc định khác cho localhost
+            if (string.IsNullOrEmpty(ipAddress))
+            {
+                ipAddress = "127.0.0.1"; // hoặc giá trị localhost của bạn
+            }
+            //vnpayData.Add("vnp_IpAddr", ipAddress); // Thêm địa chỉ IP vào dữ liệu thanh toán
+            vnpayData.Add("vnp_IpAddr", "127.0.0.1"); // Thêm địa chỉ IP vào dữ liệu thanh toán
+
+            vnpayData.Add("vnp_Locale", "vn");
+            vnpayData.Add("vnp_OrderInfo", vnp_OrderInfo);
+            vnpayData.Add("vnp_OrderType", "other"); //default value: other
+            vnpayData.Add("vnp_ReturnUrl", vnp_Returnurl);
+
+            DateTime expireTime = currentTime.AddMinutes(5);
+            string expireTimeString = expireTime.ToString("yyyyMMddHHmmss");
+            vnpayData.Add("vnp_ExpireDate", expireTimeString);
+
+            vnpayData.Add("vnp_TxnRef", vnp_TxnRef);
+
+            // Tạo chuỗi ký tự mã hóa (SecureHash)
+            string signData = "";
+            foreach (KeyValuePair<string, string> kvp in vnpayData)
+            {
+                signData += kvp.Key + "=" + kvp.Value + "&";
+            }
+            signData = signData.TrimEnd('&');
+            string vnp_SecureHash = HmacSHA512(vnp_HashSecret, signData);
+            //vnpayData.Add("vnp_SecureHashType", "SHA512");
+            vnpayData.Add("vnp_SecureHash", vnp_HashSecret);
+
+            // Chuyển hướng người dùng đến trang thanh toán của VNPAY
+            string paymentUrl = vnp_Url + "?" + BuildQueryString(vnpayData);
+            return Redirect(paymentUrl);
+        }
+
+        private string HmacSHA512(string key, string data)
+        {
+            var hmac = new System.Security.Cryptography.HMACSHA512(System.Text.Encoding.UTF8.GetBytes(key));
+            byte[] hashValue = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(data));
+            return BitConverter.ToString(hashValue).Replace("-", "").ToLower();
+        }
+
+        private string BuildQueryString(Dictionary<string, string> data)
+        {
+            List<string> queryString = new List<string>();
+            foreach (KeyValuePair<string, string> kvp in data)
+            {
+                queryString.Add(HttpUtility.UrlEncode(kvp.Key) + "=" + HttpUtility.UrlEncode(kvp.Value));
+            }
+            return string.Join("&", queryString);
         }
         #endregion
     }
