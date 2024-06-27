@@ -24,15 +24,15 @@ create table KhachHang
 )
 go
 insert into KhachHang(TaiKhoanKH, MatKhauKH, HoVaTen, SDT,Email,GioiTinh,DiaChi) 
-values('HoangYen', 'Abc123', N'Bùi Thị Hoàng Yến', '0345254655', 'hoangyen@gmail.com', 0, N'TP. Hồ Chí Minh');
+values('NguyenMinh', 'Abc123', N'Nguyễn Nhật Minh', '0345254655', 'nguyenminh@gmail.com', 0, N'TP. Hồ Chí Minh');
 insert into KhachHang(TaiKhoanKH, MatKhauKH, HoVaTen, SDT,Email,GioiTinh,DiaChi) 
-values('KhachHang', 'Abc123', N'Khách Hàng', '0974525152', 'khachhang@gmail.com', 0, N'TP. Hà Nội');
+values('CongPhuong', 'Abc123', N'Công Phượng', '0974525152', 'congphuong@gmail.com', 0, N'TP. Hà Nội');
 insert into KhachHang(TaiKhoanKH, MatKhauKH, HoVaTen, SDT,Email,GioiTinh,DiaChi) 
-values('kimchi', 'Abc123', N'Nguyễn Kim Chi', '0348212365', 'kimchi@gmail.com', 0, N'TP. Đà Nẵng');
+values('HuynhNhu', 'Abc123', N'Huỳnh Như', '0348212365', 'huynhnhu@gmail.com', 0, N'TP. Đà Nẵng');
 insert into KhachHang(TaiKhoanKH, MatKhauKH, HoVaTen, SDT,Email,GioiTinh,DiaChi) 
-values('thuykieu', 'Abc123', N'Trần Thị Thúy Kiều', '0972132542', 'thuykieu@gmail.com', 0, N'TP. Vinh');
+values('HongDuy', 'Abc123', N'Nguyễn Phan Hồng Duy', '0972132542', 'hongduy@gmail.com', 0, N'TP. Vinh');
 insert into KhachHang(TaiKhoanKH, MatKhauKH, HoVaTen, SDT,Email,GioiTinh,DiaChi) 
-values('trongdat', 'Abc123', N'Nguyễn Trọng Đạt', '0965251451', 'TrongDat@gmail.com', 1, N'TP. Hồ Chí Minh');
+values('VanLam', 'Abc123', N'Nguyễn Văn Lâm', '0965251451', 'lamtay@gmail.com', 1, N'TP. Hồ Chí Minh');
 go
 create table NhanVien
 (
