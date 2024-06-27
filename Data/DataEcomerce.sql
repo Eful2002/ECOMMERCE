@@ -122,20 +122,21 @@ create table DonHang
 	NgayGiao date null,
 	TongTien money default(0),
 	TrangThai int default(0),
+	TrangThaiThanhToan int default(0), -- 0: chưa thanh toán; 1: Đã thanh toán
 	TaiKhoanKH varchar(50),
 	foreign key(TaiKhoanKH) references KhachHang(TaiKhoanKH), -- đường quan hệ 
 )
 go
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '03/02/2000', N'120 Nguyễn Tất Thành','0974521251', N'Đà Nẵng', N'Hải Châu', N'Thanh Khê', N'05/02/2000', 120000, 0,'HoangYen');
+values (N'Hoàng Yến', '03/02/2000', N'120 Nguyễn Tất Thành','0974521251', N'Đà Nẵng', N'Hải Châu', N'Thanh Khê', N'05/02/2000', 120000, 0,'NguyenMinh');
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '05/02/2021', N'75 Tô Hoài','0974521251', N'Hà Nội', N'Ba Vì', N'Xã Ba Vì', N'08/02/2021', 300000, 0,'HoangYen');
+values (N'Hoàng Yến', '05/02/2021', N'75 Tô Hoài','0974521251', N'Hà Nội', N'Ba Vì', N'Xã Ba Vì', N'08/02/2021', 300000, 0,'NguyenMinh');
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '06/02/2021', N'12/2B Điện Biên Phủ','0974521251', N'Hà Nội', N'Ba Vì', N'Cẩm Lĩnh', N'09/02/2021', 600000, 0,'HoangYen');
+values (N'Hoàng Yến', '06/02/2021', N'12/2B Điện Biên Phủ','0974521251', N'Hà Nội', N'Ba Vì', N'Cẩm Lĩnh', N'09/02/2021', 600000, 0,'NguyenMinh');
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '07/02/2021', N'01 Lê Duẩn','0974521251', N'Đà Nẵng', N'Ba Vì', N'Ba Trại', N'12/02/2021', 700000, 0,'HoangYen');
+values (N'Hoàng Yến', '07/02/2021', N'01 Lê Duẩn','0974521251', N'Đà Nẵng', N'Ba Vì', N'Ba Trại', N'12/02/2021', 700000, 0,'NguyenMinh');
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '08/02/2021', N'93 Phan Đăng Lưu','0974521251', N'Hà Nội', N'ba Vì', N'Cổ Đô', N'09/02/2021', 1200000, 0,'HoangYen');
+values (N'Hoàng Yến', '08/02/2021', N'93 Phan Đăng Lưu','0974521251', N'Hà Nội', N'ba Vì', N'Cổ Đô', N'09/02/2021', 1200000, 0,'NguyenMinh');
 go
 create table SanPham
 (
@@ -320,15 +321,15 @@ create table BinhLuan
 )
 go
 insert into BinhLuan(TaiKhoanKH, MaSanPham, NoiDungBinhLuan, NgayBinhLuan)
-values('HoangYen', 1, 'Điện Thoại giá rẽ, chất lượng', default);
+values('NguyenMinh', 1, 'Điện Thoại giá rẽ, chất lượng', default);
 insert into BinhLuan(TaiKhoanKH, MaSanPham, NoiDungBinhLuan, NgayBinhLuan)
-values('HoangYen', 2, 'Điện Thoại giá rẽ, chất lượng', default);
+values('NguyenMinh', 2, 'Điện Thoại giá rẽ, chất lượng', default);
 insert into BinhLuan(TaiKhoanKH, MaSanPham, NoiDungBinhLuan, NgayBinhLuan)
-values('HoangYen', 3, 'Điện Thoại giá rẽ, chất lượng', default);
+values('NguyenMinh', 3, 'Điện Thoại giá rẽ, chất lượng', default);
 insert into BinhLuan(TaiKhoanKH, MaSanPham, NoiDungBinhLuan, NgayBinhLuan)
-values('HoangYen', 4, 'Điện Thoại giá rẽ, chất lượng', default);
+values('NguyenMinh', 4, 'Điện Thoại giá rẽ, chất lượng', default);
 insert into BinhLuan(TaiKhoanKH, MaSanPham, NoiDungBinhLuan, NgayBinhLuan)
-values('HoangYen', 5, 'Điện Thoại giá rẽ, chất lượng', default);
+values('NguyenMinh', 5, 'Điện Thoại giá rẽ, chất lượng', default);
 go
 create table ChiTietDonHang
 (
@@ -739,10 +740,4 @@ insert into ChiTietPhieuNhap(MaSanPham, MaPhieuNhap, SoLuongNhap)
 values(4, 4, 8);
 insert into ChiTietPhieuNhap(MaSanPham, MaPhieuNhap, SoLuongNhap) 
 values(5, 5, 9);
-select * 
-from DonHang H
-join ChiTietDonHang C
-on H.MaDonHang = C.MaDonHang
-where H.NgayDat = '22/08/2021'
-select getdate() as ngay
 
