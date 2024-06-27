@@ -144,7 +144,17 @@
                                             <p class="cart_amount"><span></span>@String.Format("{0:0,0}", ViewBag.TongTien) vnđ</p>
                                         </div>
                                         <hr />
-
+                                        <!-- Thêm các tùy chọn thanh toán -->
+                                        <div class="payment_options">
+                                            <p>
+                                                <input style="height:auto; font-size:16px; margin: 0px 8px" type="radio" id="payment_cash" name="payment_method" value="TienMat" checked>
+                                                <label for="payment_cash" style="font-size: 18px">Thanh toán bằng tiền mặt</label>
+                                            </p>
+                                            <p>
+                                                <input  style="height:auto; font-size:16px; margin: 0px 8px" type="radio" id="payment_online" name="payment_method" value="VNPAY">
+                                                <label for="payment_online" style="font-size: 18px">Thanh toán trực tuyến (VNPAY)</label>
+                                            </p>
+                                        </div>
                                         <input type="submit" class="btn btn-danger" style="border:solid 1px red" value="Đặt Hàng" />
 
                                     </div>

@@ -59,6 +59,10 @@
         [Display(Name = "Trạng Thái")]
         public int? TrangThai { get; set; }
 
+        [Display(Name = "Trạng Thái Thanh Toán")]
+        public int? TrangThaiThanhToan { get; set; }
+        
+
         [StringLength(50)]
         public string TaiKhoanKH { get; set; }
 

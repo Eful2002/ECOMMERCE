@@ -22,6 +22,7 @@
                                         <th width="30%">Tên Người Nhận</th>
                                         <th>Ngày Đặt</th>
                                         <th>Trạng Thái</th>
+                                        <th>Thanh Toán</th>
                                         <th>Thao Tác</th>
                                     </tr>
                                 </thead>
@@ -46,6 +47,15 @@
                                                     break;
                                                 case 3:
                                                     <td>Đã hủy</td>
+                                                    break;
+                                            }
+                                            @switch (item.TrangThaiThanhToan)
+                                            {
+                                                case 0:
+                                                    <td>Chưa Thanh Toán</td>
+                                                    break;
+                                                case 1:
+                                                    <td>Đã Thanh Toán</td>
                                                     break;
                                             }
                                             <td style="text-align:center">

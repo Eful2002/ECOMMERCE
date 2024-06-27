@@ -10,6 +10,7 @@
                 <th>Mã Đơn Hàng</th>
                 <th>Ngày Đặt</th>
                 <th>Trạng thái</th>
+                <th>Thanh toán</th>
                 <th>Tổng Tiền</th>
                 <th>Thao Tác</th>
             </tr>
@@ -38,9 +39,18 @@
                         <td>Chờ Xử Lý</td>
                         break;
                 }
+                @switch (item.TrangThaiThanhToan)
+                {
+                    case 0:
+                        <td>Chưa Thanh Toán</td>
+                        break;
+                    case 1:
+                        <td>Đã Thanh Toán</td>
+                        break;
+                }
                 <td>@String.Format("{0:0,0}", item.TongTien) vnđ</td>
                 <td>
-                    @Html.ActionLink("Chi Tiết","XemChiTietDonHangDaMua", "GioHang", new { @iMaDonHang = item.MaDonHang}, null)
+                    @Html.ActionLink("Chi Tiết", "XemChiTietDonHangDaMua", "GioHang", new { @iMaDonHang = item.MaDonHang }, null)
                 </td>
             </tr>
             }

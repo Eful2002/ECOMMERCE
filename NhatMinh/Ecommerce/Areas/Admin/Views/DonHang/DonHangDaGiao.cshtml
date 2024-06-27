@@ -22,6 +22,7 @@
                                         <th width="30%">Tên Người Nhận</th>
                                         <th>Ngày Đặt</th>
                                         <th>Trạng Thái</th>
+                                        <th>Thanh Toán</th>
                                         <th>Thao Tác</th>
                                     </tr>
                                 </thead>
@@ -47,10 +48,18 @@
                                                 <td>Đã hủy</td>
                                                 break;
                                         }
-
-                                    <td style="text-align:center">
-                                        <a href="~/Admin/DonHang/XemChiTietDonHang?iMaDonHang=@item.MaDonHang"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a>
-                                    </td>
+                                        @switch (item.TrangThaiThanhToan)
+                                        {
+                                            case 0:
+                                                <td>Chưa Thanh Toán</td>
+                                                break;
+                                            case 1:
+                                                <td>Đã Thanh Toán</td>
+                                                break;
+                                        }
+                                        <td style="text-align:center">
+                                            <a href="~/Admin/DonHang/XemChiTietDonHang?iMaDonHang=@item.MaDonHang"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi Tiết</a>
+                                        </td>
                                     </tr>
                                     }
                                 </tbody>
