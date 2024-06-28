@@ -15,18 +15,17 @@ namespace Ecommerce
 
             // Route for Admin area
             routes.MapRoute(
-               name: "Admin",
-               url: "Admin",
-               defaults: new { area = "Admin", controller = "DangNhap", action = "DangNhap" },
-               namespaces: new[] { "Ecommerce.Areas.Admin.Controllers" }
-           ).DataTokens.Add("area", "Admin");
+                name: "Admin",
+                url: "Admin",
+                defaults: new { area = "Admin", controller = "DangNhap", action = "DangNhap" },
+                namespaces: new[] { "Ecommerce.Areas.Admin.Controllers" }
+            ).DataTokens.Add("area", "Admin");
 
-
-            // Default route for other areas
+            // Default route for Customers area
             routes.MapRoute(
-                name: "Default",
+                name: "Customers",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                defaults: new { area = "Customers", controller = "Home", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "Ecommerce.Areas.Customers.Controllers" }
             ).DataTokens.Add("area", "Customers");
         }
