@@ -2,12 +2,12 @@
 @using PagedList.Mvc;
 @model PagedList.IPagedList<HienThiSanPham>
 @{
-    ViewBag.Title = "Trang Admin";
+    ViewBag.Title = "Sản Phẩm Bán Chạy";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="title-block">
-    <h1 class="title"> Quản Lý Sản Phẩm </h1>
+    <h1 class="title"> Danh Sách Sản Phẩm Bán Chạy </h1>
     @*<p class="title-description"> Thêm mới sản phẩm <a href="#">tại đây</a> </p>*@
 </div>
 <section class="section">
@@ -27,7 +27,7 @@
                                         <th>Tên Sản Phẩm</th>
                                         <th>Ảnh</th>
                                         <th>Giá Bán</th>
-                                        <th>Số Lượng</th>
+                                        <th>Đã Bán</th>
                                         <th>Thao Tác</th>
                                     </tr>
                                 </thead>
@@ -41,7 +41,7 @@
                                                 <img src="/Assets/Customers/img/HinhAnhSanPham/@item.sAnhBia" width="120" height="150">
                                             </td>
                                             <td class="center">@string.Format("{0:n0}", @item.dGiaBan) VND</td>
-                                            <td class="center">@item.iSoLuong</td>
+                                            <td class="center">@item.iDaBan</td>
                                             <td class="center">
                                                 <a href="~/Admin/SanPhams/Delete?id=@item.iMaSanPham"><i class="fa fa-trash"></i></a> |
                                                 <a href="~/Admin/SanPhams/Edit?id=@item.iMaSanPham"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |

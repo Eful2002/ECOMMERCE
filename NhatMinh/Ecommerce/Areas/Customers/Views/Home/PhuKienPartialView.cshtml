@@ -25,7 +25,7 @@
                     <h4 class="product_name"><a href="product-countdown.html">@item.sTenSanPham</a></h4>
                     <div class="price_box">
                         <span class="old_price">@item.dGiaGoc</span>
-                        <span class="current_price">@item.dGiaBan</span>
+                        <span class="current_price">@string.Format("{0:n0}", @item.dGiaBan) VND</span>
                     </div>
                     <div class="countdown_text">
                         <p><span>Hurry Up!</span> Offers ends in: </p>
