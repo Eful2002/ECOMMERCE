@@ -13,13 +13,22 @@ namespace Ecommerce
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Route for Admin area
             routes.MapRoute(
-              name: "Default",
-              url: "{controller}/{action}/{id}",
-              defaults: new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
-              namespaces: new string[] { "Ecommerce.Areas.Customers.Controllers" }
-          ).DataTokens.Add("area", "Customers");
+               name: "Admin",
+               url: "Admin",
+               defaults: new { area = "Admin", controller = "DangNhap", action = "DangNhap" },
+               namespaces: new[] { "Ecommerce.Areas.Admin.Controllers" }
+           ).DataTokens.Add("area", "Admin");
+
+
+            // Default route for other areas
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Ecommerce.Areas.Customers.Controllers" }
+            ).DataTokens.Add("area", "Customers");
         }
     }
 }
-
