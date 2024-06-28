@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Ecommerce.Models;
@@ -304,9 +306,9 @@ namespace Ecommerce.Areas.Customers.Controllers
         [HttpPost]
         public ActionResult DatHang(FormCollection f)
         {
-            string tienMat = Convert.ToString(f["TienMat"]);
+            string payment_method = Convert.ToString(f["payment_method"]);
             // Thanh toán bằng tiền mặt
-            if (!string.IsNullOrEmpty(tienMat))
+            if ("TienMat" == payment_method)
             {
                 string tennguoinhan = f["txtTenNguoiNhan"].ToString();
                 string diachi = f["txtDiaChi"].ToString();
@@ -367,7 +369,7 @@ namespace Ecommerce.Areas.Customers.Controllers
                 return RedirectToAction("DatHangThanhCong", "Error");
             }
             // Thanh toán bằng VNPAY
-            else
+            else if ("VNPAY" == payment_method)
             {
                 string tennguoinhan = f["txtTenNguoiNhan"].ToString();
                 string diachi = f["txtDiaChi"].ToString();
@@ -412,6 +414,7 @@ namespace Ecommerce.Areas.Customers.Controllers
                 // Thực hiện thanh toán bằng VNPAY
                 return RedirectToVNPay(dh.MaDonHang);
             }
+            return View();
         }
         #endregion
 
@@ -419,95 +422,89 @@ namespace Ecommerce.Areas.Customers.Controllers
         #region Thanh Toán VNPAY
         private ActionResult RedirectToVNPay(int maDonHang)
         {
-            // Khai Baos biến
+            // Khai Báo biến
             string vnp_TmnCode = "RA2GQHLS"; // Mã website tại VNPAY 
             string vnp_HashSecret = "4NIXE4VBUB6AYAO1NHMTC9CGEIGM94A4"; // Chuỗi bí mật
             string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; // URL thanh toán
 
             // Chuẩn bị dữ liệu thanh toán
-            //string vnp_Returnurl = Url.Action("PaymentReturn", "Payment", null, protocol: Request.Url.Scheme); // URL nhận kết quả thanh toán
             string vnp_Returnurl = "https://localhost:44375/vnpay_return"; // URL nhận kết quả thanh toán
             string vnp_TxnRef = maDonHang.ToString(); // Mã giao dịch thanh toán là mã đơn hàng
             string vnp_OrderInfo = "Don Hang " + maDonHang.ToString(); // Thông tin giao dịch
             string vnp_Amount = (100000 * 100).ToString(); // Số tiền cần thanh toán, phải là số nguyên không dấu và nhỏ hơn 18 chữ số
 
             // Xây dựng dữ liệu gửi đến VNPAY
-            Dictionary<string, string> vnpayData = new Dictionary<string, string>();
-            vnpayData.Add("vnp_Version", "2.1.0");
-            vnpayData.Add("vnp_Command", "pay");
-            vnpayData.Add("vnp_TmnCode", vnp_TmnCode);
-            vnpayData.Add("vnp_Amount", vnp_Amount);
+            Dictionary<string, string> vnpayData = new Dictionary<string, string>
+    {
+        { "vnp_Version", "2.1.0" },
+        { "vnp_Command", "pay" },
+        { "vnp_TmnCode", vnp_TmnCode },
+        { "vnp_Amount", vnp_Amount },
+        { "vnp_CurrCode", "VND" },
+        { "vnp_TxnRef", vnp_TxnRef },
+        { "vnp_OrderInfo", vnp_OrderInfo },
+        { "vnp_OrderType", "other" },
+        { "vnp_ReturnUrl", vnp_Returnurl },
+        { "vnp_IpAddr", "127.0.0.1" },
+        { "vnp_Locale", "vn" },
+        { "vnp_CreateDate", DateTime.Now.ToString("yyyyMMddHHmmss") },
+        { "vnp_ExpireDate", DateTime.Now.AddMinutes(5).ToString("yyyyMMddHHmmss") }
+    };
 
-            DateTime currentTime = DateTime.Now;
-            vnpayData.Add("vnp_CreateDate", currentTime.ToString("yyyyMMddHHmmss"));
-
-            vnpayData.Add("vnp_CurrCode", "VND");
-
-            string ipAddress = "";
-
-            // Kiểm tra nếu đang chạy trên localhost
-            if (!Request.IsLocal)
-            {
-                ipAddress = Request.ServerVariables["REMOTE_ADDR"];
-            }
-            else
-            {
-                ipAddress = Request.ServerVariables["LOCAL_ADDR"];
-                // Nếu không phải localhost, xử lý như bình thường
-            }
-
-            // Nếu ipAddress vẫn là rỗng, có thể fallback vào 127.0.0.1 hoặc giá trị mặc định khác cho localhost
-            if (string.IsNullOrEmpty(ipAddress))
-            {
-                ipAddress = "127.0.0.1"; // hoặc giá trị localhost của bạn
-            }
-            //vnpayData.Add("vnp_IpAddr", ipAddress); // Thêm địa chỉ IP vào dữ liệu thanh toán
-            vnpayData.Add("vnp_IpAddr", "127.0.0.1"); // Thêm địa chỉ IP vào dữ liệu thanh toán
-
-            vnpayData.Add("vnp_Locale", "vn");
-            vnpayData.Add("vnp_OrderInfo", vnp_OrderInfo);
-            vnpayData.Add("vnp_OrderType", "other"); //default value: other
-            vnpayData.Add("vnp_ReturnUrl", vnp_Returnurl);
-
-            DateTime expireTime = currentTime.AddMinutes(5);
-            string expireTimeString = expireTime.ToString("yyyyMMddHHmmss");
-            vnpayData.Add("vnp_ExpireDate", expireTimeString);
-
-            vnpayData.Add("vnp_TxnRef", vnp_TxnRef);
+            // Sort the data by key
+            var sortedData = vnpayData.OrderBy(kvp => kvp.Key)
+                                      .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
             // Tạo chuỗi ký tự mã hóa (SecureHash)
-            string signData = "";
-            foreach (KeyValuePair<string, string> kvp in vnpayData)
-            {
-                signData += kvp.Key + "=" + kvp.Value + "&";
-            }
-            signData = signData.TrimEnd('&');
+            string signData = BuildQueryString(sortedData);
             string vnp_SecureHash = HmacSHA512(vnp_HashSecret, signData);
-            //vnpayData.Add("vnp_SecureHashType", "SHA512");
-            vnpayData.Add("vnp_SecureHash", vnp_HashSecret);
+            sortedData.Add("vnp_SecureHashType", "SHA512");
+            sortedData.Add("vnp_SecureHash", vnp_SecureHash);
+
+            // Ghi log các giá trị để kiểm tra
+            Console.WriteLine("vnp_TmnCode: " + vnp_TmnCode);
+            Console.WriteLine("vnp_HashSecret: " + vnp_HashSecret);
+            Console.WriteLine("vnp_Url: " + vnp_Url);
+            Console.WriteLine("signData: " + signData);
+            Console.WriteLine("vnp_SecureHash: " + vnp_SecureHash);
 
             // Chuyển hướng người dùng đến trang thanh toán của VNPAY
-            string paymentUrl = vnp_Url + "?" + BuildQueryString(vnpayData);
+            string paymentUrl = vnp_Url + "?" + BuildQueryString(sortedData);
             return Redirect(paymentUrl);
         }
 
         private string HmacSHA512(string key, string data)
         {
-            var hmac = new System.Security.Cryptography.HMACSHA512(System.Text.Encoding.UTF8.GetBytes(key));
-            byte[] hashValue = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(data));
-            return BitConverter.ToString(hashValue).Replace("-", "").ToLower();
+            byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+            byte[] dataBytes = Encoding.UTF8.GetBytes(data);
+
+            using (var hmac = new HMACSHA512(keyBytes))
+            {
+                byte[] hashBytes = hmac.ComputeHash(dataBytes);
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+            }
         }
+
 
         private string BuildQueryString(Dictionary<string, string> data)
         {
             List<string> queryString = new List<string>();
-            foreach (KeyValuePair<string, string> kvp in data)
+            foreach (var kvp in data.OrderBy(kvp => kvp.Key))
             {
-                queryString.Add(HttpUtility.UrlEncode(kvp.Key) + "=" + HttpUtility.UrlEncode(kvp.Value));
+                string encodedKey = HttpUtility.UrlEncode(kvp.Key);
+                string encodedValue = HttpUtility.UrlEncode(kvp.Value);
+                queryString.Add($"{encodedKey}={encodedValue}");
             }
             return string.Join("&", queryString);
         }
+
         #endregion
+
+
+
+
+
+
     }
 
 }
