@@ -13,7 +13,7 @@ namespace Ecommerce.Areas.Customers.Controllers
 {
     public class GioHangController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
 
         #region Giỏ hàng
         //Lấy giỏ hàng 

@@ -11,7 +11,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
         // GET: Admin/Home
         public ActionResult Index(int? page)
         {

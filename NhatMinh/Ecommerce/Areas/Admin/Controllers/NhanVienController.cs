@@ -12,7 +12,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class NhanVienController : Controller
     {
-        private DBViettelStore db = new DBViettelStore();
+        private DBEcommerce db = new DBEcommerce();
 
         // GET: Admin/NhanVien
         public ActionResult Index()

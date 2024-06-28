@@ -11,7 +11,7 @@ namespace Ecommerce.Areas.Customers.Controllers
 {
     public class SapXepController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
 
         #region Hiển thị điện thoại theo giá tiền
         // điện thoại dưới 1 triệu

@@ -7,7 +7,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class ThongKeController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
         public ActionResult Thongke()
         {
             //ViewBag.DoanhThuNgayHomNay = DoanhThuNgayHomNay();

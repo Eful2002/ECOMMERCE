@@ -9,7 +9,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class DangNhapController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
         #region controll Đăng kí và đăng nhập
         public ActionResult DangNhap()
         {

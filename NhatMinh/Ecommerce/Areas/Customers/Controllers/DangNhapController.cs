@@ -11,7 +11,7 @@ namespace Ecommerce.Areas.Customers.Controllers
 {
     public class DangNhapController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
         [HttpGet]
         public ActionResult DangKi()
         {

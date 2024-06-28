@@ -8,7 +8,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class KhoController : Controller
     {
-        private DBViettelStore db = new DBViettelStore();
+        private DBEcommerce db = new DBEcommerce();
 
         // GET: Admin/Kho
         public ActionResult SanPhamBanChay(int? page)

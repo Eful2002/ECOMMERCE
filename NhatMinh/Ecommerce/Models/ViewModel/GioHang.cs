@@ -4,7 +4,7 @@ namespace Ecommerce.Models.ViewModel
 {
     public class GioHang
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
         public int iMaSanPham { get; set; }
         public int iMaMauSac { get; set; }
         public int iRom { get; set; }

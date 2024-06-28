@@ -11,7 +11,7 @@ namespace Ecommerce.Areas.Customers.Controllers
 {
     public class TimKiemController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
         public ActionResult TimKiem(String sTuKhoa, int? page, FormCollection f)
         {
             int luachon = int.Parse(f["loai"]);

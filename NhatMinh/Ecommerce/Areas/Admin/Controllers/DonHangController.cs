@@ -9,7 +9,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class DonHangController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
 
         #region List Đơn Hàng
         public ActionResult DonHangAll()

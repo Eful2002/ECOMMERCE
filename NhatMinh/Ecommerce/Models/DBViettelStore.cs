@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace Ecommerce.Models
 {
-    public partial class DBViettelStore : DbContext
+    public partial class DBEcommerce : DbContext
     {
-        public DBViettelStore()
-            : base("name=DBViettelStore")
+        public DBEcommerce()
+            : base("name=DBEcommerce")
         {
         }
 

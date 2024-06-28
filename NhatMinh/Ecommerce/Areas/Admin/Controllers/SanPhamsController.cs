@@ -12,7 +12,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 {
     public class SanPhamsController : Controller
     {
-        private DBViettelStore db = new DBViettelStore();
+        private DBEcommerce db = new DBEcommerce();
 
         // GET: Admin/SanPhams
         public ActionResult Index()

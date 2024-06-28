@@ -8,7 +8,7 @@ namespace Ecommerce.Areas.Customers.Controllers
 {
     public class HomeController : Controller
     {
-        DBViettelStore db = new DBViettelStore();
+        DBEcommerce db = new DBEcommerce();
         // Trang sản phẩm
         public ActionResult Index()
         {
