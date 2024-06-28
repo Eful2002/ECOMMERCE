@@ -16,9 +16,9 @@ namespace Ecommerce
             routes.MapRoute(
               name: "Default",
               url: "{controller}/{action}/{id}",
-              defaults: new { Controller = "DangNhap", action = "DangNhap", id = UrlParameter.Optional },
-              namespaces: new string[] { "Ecommerce.Areas.Admin.Controllers" }
-          ).DataTokens.Add("area", "Admin");
+              defaults: new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
+              namespaces: new string[] { "Ecommerce.Areas.Customers.Controllers" }
+          ).DataTokens.Add("area", "Customers");
         }
     }
 }
