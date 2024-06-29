@@ -128,15 +128,15 @@ create table DonHang
 )
 go
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '03/02/2000', N'120 Nguyễn Tất Thành','0974521251', N'Đà Nẵng', N'Hải Châu', N'Thanh Khê', N'05/02/2000', 120000, 0,'NguyenMinh');
+values (N'Nguyễn Minh', '03/02/2000', N'120 Nguyễn Tất Thành','0974521251', N'Đà Nẵng', N'Hải Châu', N'Thanh Khê', N'05/02/2000', 120000, 0,'NguyenMinh');
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '05/02/2021', N'75 Tô Hoài','0974521251', N'Hà Nội', N'Ba Vì', N'Xã Ba Vì', N'08/02/2021', 300000, 0,'NguyenMinh');
+values (N'Nguyễn Minh', '05/02/2021', N'75 Tô Hoài','0974521251', N'Hà Nội', N'Ba Vì', N'Xã Ba Vì', N'08/02/2021', 300000, 0,'NguyenMinh');
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '06/02/2021', N'12/2B Điện Biên Phủ','0974521251', N'Hà Nội', N'Ba Vì', N'Cẩm Lĩnh', N'09/02/2021', 600000, 0,'NguyenMinh');
+values (N'Văn Thanh', '06/02/2021', N'12/2B Điện Biên Phủ','0974521251', N'Hà Nội', N'Ba Vì', N'Cẩm Lĩnh', N'09/02/2021', 600000, 0,'NguyenMinh');
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '07/02/2021', N'01 Lê Duẩn','0974521251', N'Đà Nẵng', N'Ba Vì', N'Ba Trại', N'12/02/2021', 700000, 0,'NguyenMinh');
+values (N'Công Phượng', '07/02/2021', N'01 Lê Duẩn','0974521251', N'Đà Nẵng', N'Ba Vì', N'Ba Trại', N'12/02/2021', 700000, 0,'NguyenMinh');
 insert into DonHang(TenNguoiNhan, NgayDat, DiaChi, SDT, ThanhPho, Quan, Phuong, NgayGiao, TongTien, TrangThai, TaiKhoanKH)
-values (N'Hoàng Yến', '08/02/2021', N'93 Phan Đăng Lưu','0974521251', N'Hà Nội', N'ba Vì', N'Cổ Đô', N'09/02/2021', 1200000, 0,'NguyenMinh');
+values (N'Văn Lâm', '08/02/2021', N'93 Phan Đăng Lưu','0974521251', N'Hà Nội', N'ba Vì', N'Cổ Đô', N'09/02/2021', 1200000, 0,'NguyenMinh');
 go
 create table SanPham
 (
