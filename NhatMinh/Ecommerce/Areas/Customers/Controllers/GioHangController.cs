@@ -306,6 +306,19 @@ namespace Ecommerce.Areas.Customers.Controllers
         [HttpPost]
         public ActionResult DatHang(FormCollection f)
         {
+            #region Kiểm tra đăng nhập trước khi mua hàng và giỏ hàng khác null
+            //Kiểm tra đăng đăng nhập
+            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            {
+                return RedirectToAction("DangNhap", "DangNhap");
+            }
+            //Kiểm tra giỏ hàng
+            if (Session["GioHang"] == null)
+            {
+                RedirectToAction("Index", "Home");
+            }
+            #endregion
+
             string payment_method = Convert.ToString(f["payment_method"]);
             // Thanh toán bằng tiền mặt
             if ("TienMat" == payment_method)
@@ -316,16 +329,7 @@ namespace Ecommerce.Areas.Customers.Controllers
                 string thanhpho = f["province"].ToString();
                 string quan = f["district"].ToString();
                 string phuong = f["ward"].ToString();
-                //Kiểm tra đăng đăng nhập
-                if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
-                {
-                    return RedirectToAction("DangNhap", "DangNhap");
-                }
-                //Kiểm tra giỏ hàng
-                if (Session["GioHang"] == null)
-                {
-                    RedirectToAction("Index", "Home");
-                }
+
                 //Thêm đơn hàng
                 DonHang dh = new DonHang();
                 //KhachHang kh = (KhachHang)Session["TaiKhoan"];

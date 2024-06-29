@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Ecommerce.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace Ecommerce.Areas.Admin.Controllers
 {
@@ -114,6 +115,20 @@ namespace Ecommerce.Areas.Admin.Controllers
                 KhachHang khachHang = db.KhachHang.Find(id);
                 db.KhachHang.Remove(khachHang);
                 db.SaveChanges();
+
+                #region Kiểm tra đăng nhập khách hàng và xóa session tương ứng
+                //Kiểm tra người dùng đã đăng nhập chưa?
+                if (Session["TaiKhoan"] != null)
+                {
+                    KhachHang kh = (KhachHang)Session["TaiKhoan"];
+                    if (kh != null && kh.TaiKhoanKH == khachHang.TaiKhoanKH)
+                    {
+                        Session["TaiKhoan"] = null;
+                    }
+                }
+
+                #endregion
+
                 return RedirectToAction("Index");
             }
             catch (Exception)
@@ -121,7 +136,7 @@ namespace Ecommerce.Areas.Admin.Controllers
 
                 return RedirectToAction("ErrorKey", "Error");
             }
-           
+
         }
         // Khóa Tài Khoản
         public ActionResult KhoaTaiKhoan(string sMakhachHang)
@@ -129,7 +144,17 @@ namespace Ecommerce.Areas.Admin.Controllers
             KhachHang kh = db.KhachHang.SingleOrDefault(n => n.TaiKhoanKH == sMakhachHang);
             kh.TrangThai = 1;
             db.SaveChanges();
-            return RedirectToAction("Index","KhachHang");
+            #region Kiểm tra đăng nhập khách hàng và xóa session tương ứng
+            //Kiểm tra người dùng đã đăng nhập chưa?
+            if (Session["TaiKhoan"] != null)
+            {
+                KhachHang khSesion = (KhachHang)Session["TaiKhoan"];
+                if (kh != null && kh.TaiKhoanKH == khSesion.TaiKhoanKH)
+                {
+                    Session["TaiKhoan"] = null;
+                }
+            }
+            return RedirectToAction("Index", "KhachHang");
         }
         // Mở Tài Khoản
         public ActionResult MoTaiKhoan(string sMakhachHang)
