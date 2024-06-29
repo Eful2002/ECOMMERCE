@@ -1,5 +1,11 @@
 # ECOMMERCE
+Website bán hàng
 
-## Email
-Vonhanh21@gmail.com
-Abc123
+## Account test
+Admin:
+	UserName: "Admin"
+	Password: "Abc123"
+
+Customer:
+	UserName: "NguyenMinh"
+	Password: "Abc123"
