@@ -505,6 +505,7 @@
     <Content Include="Areas\Admin\Views\Kho\SanPhamBanChay.cshtml" />
     <Content Include="Areas\Admin\Views\Kho\SanPhamBanHet.cshtml" />
     <Content Include="Areas\Admin\Views\Kho\SanPhamTonKho.cshtml" />
+    <Content Include="Areas\Customers\Views\DangNhap\ResetPassword.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

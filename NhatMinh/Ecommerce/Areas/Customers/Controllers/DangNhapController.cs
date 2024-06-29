@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Ecommerce.Models;
@@ -62,7 +63,7 @@ namespace Ecommerce.Areas.Customers.Controllers
             string ssMatKhau = f["txtMatKhau"].ToString();
             if (ssTaiKhoan == "" & ssMatKhau == "")
             {
-                ModelState.AddModelError("", "Vui loàng nhập tên đăng nhập và mật khẩu của bạn !");
+                ModelState.AddModelError("", "Vui lòng nhập tên đăng nhập và mật khẩu của bạn !");
             }
             else if (ssTaiKhoan == "")
             {
@@ -93,6 +94,108 @@ namespace Ecommerce.Areas.Customers.Controllers
 
             return View();
         }
+
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResetPassword(FormCollection f)
+        {
+
+            // Kiểm tra tên đăng nhập và mật khẩu
+            string ssEmail = Convert.ToString(f["Email"]);
+            if (string.IsNullOrEmpty(ssEmail))
+            {
+                ModelState.AddModelError("", "Vui lòng nhập email cần lấy lại mật khẩu!");
+            }
+
+            else
+            {
+                KhachHang kh = db.KhachHang.FirstOrDefault(n => n.Email == ssEmail);
+                if (kh == null)
+                {
+                    ModelState.AddModelError("", "Tài khoản email chưa tồn tại!");
+                    return View();
+                }
+                else if (kh.TrangThai == 1)
+                {
+                    ModelState.AddModelError("", "Tài khoản của bạn đã bị khóa !");
+                    return View();
+                }
+                else
+                {
+                    var (emailSent, newPassword) = SendNewPasswordEmail(ssEmail);
+                    if (!emailSent)
+                    {
+                        ModelState.AddModelError("", "Đã xảy ra lỗi khi thực hiện gửi mail !");
+                        return View();
+                    }
+
+                    // Cập nhật lại pass
+                    kh.MatKhauKH = newPassword;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View();
+        }
+
+        private (bool, string) SendNewPasswordEmail(string email)
+        {
+            try
+            {
+                // Tạo mật khẩu mới
+                var newPassword = PasswordGenerator.GenerateRandomPassword();
+
+                var fromAddress = new MailAddress("nem26102002@gmail.com", "Ecommerce NguyenMinh");
+                var toAddress = new MailAddress(email);
+                const string subject = "Resetpassword Ecommerce";
+                string body = $"Mật khẩu mới của bạn là: {newPassword}";
+
+                using (var smtp = new SmtpClient())
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential(fromAddress.Address, "fznfmgqdifqkpvhb");
+
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(message);
+                    }
+                }
+                return (true, newPassword);
+            }
+            catch (Exception ex)
+            {
+                return (false, null);
+            }
+        }
+
+
+        public static class PasswordGenerator
+        {
+            private static Random random = new Random();
+            private const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            public static string GenerateRandomPassword(int length = 8)
+            {
+                return new string(Enumerable.Repeat(chars, length)
+                    .Select(s => s[random.Next(s.Length)]).ToArray());
+            }
+        }
+
         public ActionResult DangXuat()
         {
             Session["TaiKhoan"] = null;
@@ -121,7 +224,7 @@ namespace Ecommerce.Areas.Customers.Controllers
                 db.Entry(khachHang).State = EntityState.Modified;
                 db.SaveChanges();
                 Session["TaiKhoan"] = khachHang;
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
             return View(khachHang);
         }
