@@ -24,7 +24,7 @@ create table KhachHang
 )
 go
 insert into KhachHang(TaiKhoanKH, MatKhauKH, HoVaTen, SDT,Email,GioiTinh,DiaChi) 
-values('NguyenMinh', 'Abc123', N'Nguyễn Nhật Minh', '0345254655', 'nguyenminh@gmail.com', 0, N'TP. Hồ Chí Minh');
+values('NguyenMinh', 'Abc123', N'Nguyễn Nhật Minh', '0345254655', 'nem26102002@gmail.com', 0, N'TP. Hồ Chí Minh');
 insert into KhachHang(TaiKhoanKH, MatKhauKH, HoVaTen, SDT,Email,GioiTinh,DiaChi) 
 values('CongPhuong', 'Abc123', N'Công Phượng', '0974525152', 'congphuong@gmail.com', 0, N'TP. Hà Nội');
 insert into KhachHang(TaiKhoanKH, MatKhauKH, HoVaTen, SDT,Email,GioiTinh,DiaChi) 
