@@ -14,27 +14,27 @@ namespace Ecommerce.Areas.Admin.Controllers
         #region List Đơn Hàng
         public ActionResult DonHangAll()
         {
-            var lstdonhang = db.DonHang.ToList();
+            var lstdonhang = db.DonHang.OrderByDescending(n=>n.MaDonHang).ToList();
             return View(lstdonhang);
         }
         public ActionResult DonHangXacNhan()
         {
-            var lstdonhangxacnhan = db.DonHang.Where(n => n.TrangThai == 0).ToList();
+            var lstdonhangxacnhan = db.DonHang.Where(n => n.TrangThai == 0).OrderByDescending(n => n.MaDonHang).ToList();
             return View(lstdonhangxacnhan);
         }
         public ActionResult DonHangDangGiao()
         {
-            var lstdonhangdanggiao = db.DonHang.Where(n => n.TrangThai == 1).ToList();
+            var lstdonhangdanggiao = db.DonHang.Where(n => n.TrangThai == 1).OrderByDescending(n => n.MaDonHang).ToList();
             return View(lstdonhangdanggiao);
         }
         public ActionResult DonHangDaGiao()
         {
-            var lstdonhangdagiao = db.DonHang.Where(n => n.TrangThai == 2).ToList();
+            var lstdonhangdagiao = db.DonHang.Where(n => n.TrangThai == 2).OrderByDescending(n => n.MaDonHang).ToList();
             return View(lstdonhangdagiao);
         }
         public ActionResult DonHangDaHuy()
         {
-            var lstdonhangdahuy = db.DonHang.Where(n => n.TrangThai == 3).ToList();
+            var lstdonhangdahuy = db.DonHang.Where(n => n.TrangThai == 3).OrderByDescending(n => n.MaDonHang).ToList();
             return View(lstdonhangdahuy);
         }
         #endregion

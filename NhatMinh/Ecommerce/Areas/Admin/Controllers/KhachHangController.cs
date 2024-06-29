@@ -154,6 +154,7 @@ namespace Ecommerce.Areas.Admin.Controllers
                     Session["TaiKhoan"] = null;
                 }
             }
+            #endregion
             return RedirectToAction("Index", "KhachHang");
         }
         // Mở Tài Khoản

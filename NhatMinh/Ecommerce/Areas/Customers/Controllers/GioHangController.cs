@@ -416,65 +416,85 @@ namespace Ecommerce.Areas.Customers.Controllers
                 db.SaveChanges();
 
                 // Thực hiện thanh toán bằng VNPAY
-                return RedirectToVNPay(dh.MaDonHang);
+                string returnUrl = "https://localhost:44359/GioHang/ReturnUrl";
+                string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+                string vnp_TmnCode = "QV4AJ3NO";
+                string vnp_HashSecret = "3CP0V5HCDJ6VFE1YPVYL85YUHK1SGLLP";
+
+                // Tạo các thông tin cần thiết để gửi sang VNPAY
+                SortedList<string, string> vnp_Params = new SortedList<string, string>();
+                vnp_Params.Add("vnp_Version", "2.0.0");
+                vnp_Params.Add("vnp_Command", "pay");
+                vnp_Params.Add("vnp_TmnCode", vnp_TmnCode);
+                vnp_Params.Add("vnp_Locale", "vn");
+                vnp_Params.Add("vnp_CurrCode", "VND");
+                vnp_Params.Add("vnp_TxnRef", dh.MaDonHang.ToString()); // Mã đơn hàng của bạn
+                vnp_Params.Add("vnp_OrderInfo", "Thanh toan don hang"); // Thông tin đơn hàng của bạn
+                vnp_Params.Add("vnp_Amount", (dh.TongTien * 100).ToString()); // Số tiền cần thanh toán (phải nhân 100 vì VNPAY yêu cầu là số nguyên)
+                vnp_Params.Add("vnp_ReturnUrl", returnUrl);
+                vnp_Params.Add("vnp_IpAddr", Request.UserHostAddress); // IP của người thanh toán
+                vnp_Params.Add("vnp_CreateDate", DateTime.Now.ToString("yyyyMMddHHmmss"));
+
+                string vnp_SecureHashType = "SHA512"; // Loại mã hóa
+                string vnp_SecureHash = HmacSHA512(vnp_HashSecret, string.Join("", vnp_Params.Select(kvp => kvp.Key + "=" + kvp.Value + "&").ToArray()).Trim('&'));
+
+                vnp_Params.Add("vnp_SecureHashType", vnp_SecureHashType);
+                vnp_Params.Add("vnp_SecureHash", vnp_SecureHash);
+
+                string vnp_UrlEncode = vnp_Url + "?" + string.Join("&", vnp_Params.Select(kvp => kvp.Key + "=" + HttpUtility.UrlEncode(kvp.Value)).ToArray());
+                return Redirect(vnp_UrlEncode);
             }
+
             return View();
+
         }
         #endregion
 
-
         #region Thanh Toán VNPAY
-        private ActionResult RedirectToVNPay(int maDonHang)
+        public ActionResult ReturnUrl(string vnp_ResponseCode, string vnp_TransactionNo, string vnp_TxnRef)
         {
-            // Khai Báo biến
-            string vnp_TmnCode = "RA2GQHLS"; // Mã website tại VNPAY 
-            string vnp_HashSecret = "4NIXE4VBUB6AYAO1NHMTC9CGEIGM94A4"; // Chuỗi bí mật
-            string vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; // URL thanh toán
+            // Xử lý kết quả từ VNPAY khi redirect về
 
-            // Chuẩn bị dữ liệu thanh toán
-            string vnp_Returnurl = "https://localhost:44375/vnpay_return"; // URL nhận kết quả thanh toán
-            string vnp_TxnRef = maDonHang.ToString(); // Mã giao dịch thanh toán là mã đơn hàng
-            string vnp_OrderInfo = "Don Hang " + maDonHang.ToString(); // Thông tin giao dịch
-            string vnp_Amount = (100000 * 100).ToString(); // Số tiền cần thanh toán, phải là số nguyên không dấu và nhỏ hơn 18 chữ số
+            // Xử lý kết quả thanh toán tại đây
+            if (vnp_ResponseCode == "00")
+            {
+                return RedirectToAction("DatHangThanhCong", "Error");
+            }
+            else
+            {
+                if (vnp_ResponseCode == "24")
+                {
+                    int maDonHang = int.Parse(vnp_TxnRef);
+                    var donHang = db.DonHang.Find(maDonHang);
+                    if (donHang != null)
+                    {
+                        // Lấy danh sách chi tiết đơn hàng
+                        var chiTietDonHangs = db.ChiTietDonHang.Where(n => n.MaDonHang == maDonHang).ToList();
 
-            // Xây dựng dữ liệu gửi đến VNPAY
-            Dictionary<string, string> vnpayData = new Dictionary<string, string>
-    {
-        { "vnp_Version", "2.1.0" },
-        { "vnp_Command", "pay" },
-        { "vnp_TmnCode", vnp_TmnCode },
-        { "vnp_Amount", vnp_Amount },
-        { "vnp_CurrCode", "VND" },
-        { "vnp_TxnRef", vnp_TxnRef },
-        { "vnp_OrderInfo", vnp_OrderInfo },
-        { "vnp_OrderType", "other" },
-        { "vnp_ReturnUrl", vnp_Returnurl },
-        { "vnp_IpAddr", "127.0.0.1" },
-        { "vnp_Locale", "vn" },
-        { "vnp_CreateDate", DateTime.Now.ToString("yyyyMMddHHmmss") },
-        { "vnp_ExpireDate", DateTime.Now.AddMinutes(5).ToString("yyyyMMddHHmmss") }
-    };
+                        // Cộng lại số lượng sản phẩm và lưu lại trong cơ sở dữ liệu
+                        foreach (var item in chiTietDonHangs)
+                        {
+                            ChiTietSP ctsp = db.ChiTietSP.SingleOrDefault(n => n.MaSanPham == item.MaSanPham && n.MaMauSac == item.MaMauSac && n.Rom == item.Rom && n.Ram == item.Ram);
+                            if (ctsp != null)
+                            {
+                                ctsp.SoLuong += item.SoLuongMua;
+                                ctsp.SoLuongDaBan -= item.SoLuongMua;
+                            }
+                        }
 
-            // Sort the data by key
-            var sortedData = vnpayData.OrderBy(kvp => kvp.Key)
-                                      .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+                        // Xóa chi tiết đơn hàng
+                        db.ChiTietDonHang.RemoveRange(chiTietDonHangs);
 
-            // Tạo chuỗi ký tự mã hóa (SecureHash)
-            string signData = BuildQueryString(sortedData);
-            string vnp_SecureHash = HmacSHA512(vnp_HashSecret, signData);
-            sortedData.Add("vnp_SecureHashType", "SHA512");
-            sortedData.Add("vnp_SecureHash", vnp_SecureHash);
+                        // Xóa đơn hàng chính
+                        db.DonHang.Remove(donHang);
 
-            // Ghi log các giá trị để kiểm tra
-            Console.WriteLine("vnp_TmnCode: " + vnp_TmnCode);
-            Console.WriteLine("vnp_HashSecret: " + vnp_HashSecret);
-            Console.WriteLine("vnp_Url: " + vnp_Url);
-            Console.WriteLine("signData: " + signData);
-            Console.WriteLine("vnp_SecureHash: " + vnp_SecureHash);
+                        // Lưu thay đổi vào cơ sở dữ liệu
+                        db.SaveChanges();
+                    }
+                }
 
-            // Chuyển hướng người dùng đến trang thanh toán của VNPAY
-            string paymentUrl = vnp_Url + "?" + BuildQueryString(sortedData);
-            return Redirect(paymentUrl);
+                return RedirectToAction("DatHangThatBai", "Error");
+            }
         }
 
         private string HmacSHA512(string key, string data)
@@ -501,14 +521,7 @@ namespace Ecommerce.Areas.Customers.Controllers
             }
             return string.Join("&", queryString);
         }
-
         #endregion
 
-
-
-
-
-
     }
-
 }

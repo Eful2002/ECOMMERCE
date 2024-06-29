@@ -20,6 +20,10 @@ namespace Ecommerce.Areas.Customers.Controllers
         {
             return View();
         }
+        public ActionResult DatHangThatBai()
+        {
+            return View();
+        }
         public ActionResult DangKiThanhCong()
         {
             return View();
