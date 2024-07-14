@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Ecommerce.Models;
@@ -105,15 +106,15 @@ namespace Ecommerce.Areas.Admin.Controllers
         {
             //try
             //{
-                string dt = "2021/08/22";
-                //string dt = DateTime.Now.ToString("dd/MM/yyyy");
-                decimal doanhthuHomNay = (decimal)(from ctdh in db.ChiTietDonHang
-                                                    join dh in db.DonHang
-                                                    on ctdh.MaDonHang equals dh.MaDonHang
-                                                    where dh.NgayDat == DateTime.Parse(dt)
-                                                    group ctdh by dh.TrangThai into g
-                                                    select g.Sum(n => n.ThanhTien)).FirstOrDefault();
-                return doanhthuHomNay;
+            string dt = "2021/08/22";
+            //string dt = DateTime.Now.ToString("dd/MM/yyyy");
+            decimal doanhthuHomNay = (decimal)(from ctdh in db.ChiTietDonHang
+                                               join dh in db.DonHang
+                                               on ctdh.MaDonHang equals dh.MaDonHang
+                                               where dh.NgayDat == DateTime.Parse(dt)
+                                               group ctdh by dh.TrangThai into g
+                                               select g.Sum(n => n.ThanhTien)).FirstOrDefault();
+            return doanhthuHomNay;
             //}
             //catch (System.Exception)
             //{
@@ -165,18 +166,28 @@ namespace Ecommerce.Areas.Admin.Controllers
         {
             string dt = DateTime.Now.ToString("dd/MM/yyyy");
             DateTime datenow = DateTime.Now.Date;
-           var dh = db.DonHang.Where(n=>n.NgayDat == DateTime.Now).ToList();
+            var dh = db.DonHang.Where(n => n.NgayDat == DateTime.Now).ToList();
             return View(dh);
         }
         // Thống kê tháng năm
         public ActionResult TKThangNam(FormCollection f)
         {
+            int ngay = int.Parse(f["ngay"]);
             int thang = int.Parse(f["thang"]);
             int nam = int.Parse(f["nam"]);
+            List<DonHang> dh;
 
-            var dh = db.DonHang.Where(n => n.NgayDat.Month == thang & n.NgayDat.Year == nam).ToList();
+            if (ngay == 32)
+            {
+                dh = db.DonHang.Where(n => n.NgayDat.Month == thang && n.NgayDat.Year == nam).ToList();
+            }
+            else
+            {
+                dh = db.DonHang.Where(n => n.NgayDat.Day == ngay && n.NgayDat.Month == thang && n.NgayDat.Year == nam).ToList();
+            }
+
             decimal tongtien = 0;
-            foreach(var item in dh)
+            foreach (var item in dh)
             {
                 tongtien += decimal.Parse(item.ChiTietDonHang.Sum(n => n.ThanhTien).Value.ToString());
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -42,6 +43,8 @@ namespace Ecommerce.Areas.Admin.Controllers
             ViewBag.MaHangSX = new SelectList(db.HangSanXuat, "MaHangSX", "TenHangSX");
             ViewBag.MaSanPham = new SelectList(db.HinhAnh, "MaSanPham", "HinhAnh1");
             ViewBag.MaLoaiSP = new SelectList(db.LoaiSanPham, "MaLoaiSP", "TenLoaiSP");
+            ViewBag.MauSac = db.MauSac.ToList();
+
             return View();
         }
 
@@ -50,13 +53,26 @@ namespace Ecommerce.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSanPham,TenSanPham,AnhBia,ManHinh,CPU,Camera_Truoc,Camera_Sau,HeDieuHanh,QuayPhim,Pin,ThoiGianBaoHanh,ThongTinThemVeSP,TrangThai,MaLoaiSP,MaHangSX")] SanPham sanPham)
+        public ActionResult Create([Bind(Include = "MaSanPham,TenSanPham,AnhBia,ManHinh,CPU,Camera_Truoc,Camera_Sau,HeDieuHanh,QuayPhim,Pin,ThoiGianBaoHanh,ThongTinThemVeSP,TrangThai,MaLoaiSP,MaHangSX")] SanPham sanPham, HttpPostedFileBase AnhBiaFile)
         {
             if (ModelState.IsValid)
             {
+                if (AnhBiaFile != null && AnhBiaFile.ContentLength > 0)
+                {
+                    // Lấy tên tệp và đường dẫn lưu trữ
+                    var fileName = Path.GetFileName(AnhBiaFile.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Assets/Customers/img/HinhAnhSanPham/"), fileName);
+
+                    // Lưu tệp vào đường dẫn
+                    AnhBiaFile.SaveAs(path);
+
+                    // Cập nhật thuộc tính AnhBia với đường dẫn tệp
+                    sanPham.AnhBia = fileName;
+                }
+
                 db.SanPham.Add(sanPham);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.MaHangSX = new SelectList(db.HangSanXuat, "MaHangSX", "TenHangSX", sanPham.MaHangSX);
@@ -136,5 +152,6 @@ namespace Ecommerce.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
