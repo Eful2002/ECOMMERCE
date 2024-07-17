@@ -1,15 +1,18 @@
-﻿@model Ecommerce.Models.SanPham
+﻿@using Ecommerce.Models
+@model SanPham
 
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+    IEnumerable<ChiTietSP> lstChiTietSP = ViewBag.ChiTietSanPham as IEnumerable<ChiTietSP>;
 }
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Cập nhật sản phẩm</h4>
         <hr />
@@ -131,10 +134,76 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Cập nhật" class="btn btn-primary" />
-                <a href="#">Thêm Mới Chi Tiết</a>
             </div>
         </div>
     </div>
 }
+
+<section class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="card-title-block">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-group mb-0">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm Phân Loại Sản Phẩm..." style="width: 350px;">
+                            </div>
+                            <a href="~/Admin/ChiTietSanPham/Create?maSanPham=@Model.MaSanPham" class="btn btn-oval btn-primary">Thêm Mới Chi Tiết Sản Phẩm</a>
+                        </div>
+                    </div>
+                    <section class="example">
+                        <div class="table-flip-scroll">
+                            <table class="table table-striped table-bordered table-hover flip-content" id="chiTietSPTable">
+                                <thead class="flip-header">
+                                    <tr>
+                                        <th>Màu Sắc</th>
+                                        <th>Rom</th>
+                                        <th>Ram</th>
+                                        <th>Giá Bán</th>
+                                        <th>Số Lượng</th>
+                                        <th>Số Lượng Đã Bán</th>
+                                        <th>Số Lượng Đã Bán</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (lstChiTietSP.Count() > 0)
+                                    {
+                                        foreach (var item in lstChiTietSP)
+                                        {
+                                            <tr class="even gradeC">
+                                                <td>@item.MauSac.TenMauSac</td>
+                                                <td>@item.Rom</td>
+                                                <td>@item.Ram</td>
+                                                <td>@item.GiaBan</td>
+                                                <td>@item.SoLuong</td>
+                                                <td>@item.SoLuongDaBan</td>
+                                                <td style="text-align:center">
+                                                    <a href="~/Admin/ChiTietSanPham/DeleteConfirmed?MaSanPham=@item.MaSanPham&MaMauSac=@item.MaMauSac&Rom=@item.Rom&Ram=@item.Ram"><i class="fa fa-trash"></i></a> |
+                                                    <a href="~/Admin/ChiTietSanPham/Edit?MaSanPham=@item.MaSanPham&MaMauSac=@item.MaMauSac&Rom=@item.Rom&Ram=@item.Ram"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#chiTietSPTable tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 
 

@@ -19,22 +19,31 @@ namespace Ecommerce.Areas.Admin.Controllers
             {
                 page = 1;
             }
-            var Listdienthoaiall = db.SanPham.Join(db.ChiTietSP,
-                                                SanPham => SanPham.MaSanPham,
-                                                ChiTietSP => ChiTietSP.MaSanPham,
-                                                (SanPham, ChiTietSP) => new HienThiSanPham
-                                                {
-                                                    iMaSanPham = SanPham.MaSanPham,
-                                                    iRom = ChiTietSP.Rom,
-                                                    iRam = ChiTietSP.Ram,
-                                                    sTenMauSac = ChiTietSP.MauSac.TenMauSac,
-                                                    sTenSanPham = SanPham.TenSanPham,
-                                                    sAnhBia = SanPham.AnhBia,
-                                                    dGiaBan = ChiTietSP.GiaBan,
-                                                    iSoLuong = ChiTietSP.SoLuong,
-                                                    sMoTa = SanPham.ThongTinThemVeSP,
-                                                    iMoi = ChiTietSP.Moi,
-                                                }).ToList();
+            var Listdienthoaiall = db.SanPham
+             .GroupJoin(
+                 db.ChiTietSP,
+                 SanPham => SanPham.MaSanPham,
+                 ChiTietSP => ChiTietSP.MaSanPham,
+                 (SanPham, ChiTietSPs) => new { SanPham, ChiTietSPs }
+             )
+             .SelectMany(
+                 x => x.ChiTietSPs.DefaultIfEmpty(),
+                 (x, ChiTietSP) => new HienThiSanPham
+                 {
+                     iMaSanPham = x.SanPham.MaSanPham,
+                     iRom = ChiTietSP != null ? ChiTietSP.Rom : 0,
+                     iRam = ChiTietSP != null ? ChiTietSP.Ram : 0,
+                     sTenMauSac = ChiTietSP != null ? ChiTietSP.MauSac.TenMauSac : null,
+                     sTenSanPham = x.SanPham.TenSanPham,
+                     sAnhBia = x.SanPham.AnhBia,
+                     dGiaBan = ChiTietSP != null ? ChiTietSP.GiaBan : 0,
+                     iSoLuong = ChiTietSP != null ? ChiTietSP.SoLuong : 0,
+                     sMoTa = x.SanPham.ThongTinThemVeSP,
+                     iMoi = ChiTietSP != null ? ChiTietSP.Moi : 0
+                 }
+             )
+             .ToList()
+             .OrderByDescending(n=>n.iMaSanPham);
             int pageSize = 16;
             int pageNumber = (page ?? 1);
             return View(Listdienthoaiall.ToPagedList(pageNumber, pageSize));

@@ -158,7 +158,7 @@ namespace Ecommerce.Areas.Customers.Controllers
             List<GioHang> lstGioHang = Session["GioHang"] as List<GioHang>;
             if (lstGioHang != null)
             {
-                dTongTien = lstGioHang.Sum(n => n.ThanhTien);
+                dTongTien = lstGioHang.Sum(n => n.ThanhTien * n.iSoLuong);
             }
             return dTongTien;
         }
@@ -414,6 +414,27 @@ namespace Ecommerce.Areas.Customers.Controllers
 
                 db.DonHang.Add(dh);
                 db.SaveChanges();
+                //Thêm chi tiết đơn hàng
+                foreach (var item in gh)
+                {
+                    ChiTietDonHang ctDH = new ChiTietDonHang();
+                    ctDH.MaDonHang = dh.MaDonHang;
+                    ctDH.MaSanPham = item.iMaSanPham;
+                    ctDH.MaMauSac = item.iMaMauSac;
+                    ctDH.Rom = item.iRom;
+                    ctDH.Ram = item.iRam;
+                    ctDH.SoLuongMua = item.iSoLuong;
+                    ctDH.ThanhTien = (Decimal)item.dDonGia;
+                    #region Trừ số lượng mua
+                    ChiTietSP sp = db.ChiTietSP.SingleOrDefault(n => n.MaSanPham == item.iMaSanPham && n.MaMauSac == item.iMaMauSac && n.Rom == item.iRom && n.Ram == item.iRam);
+                    sp.SoLuong -= ctDH.SoLuongMua;
+                    sp.SoLuongDaBan += ctDH.SoLuongMua;
+                    #endregion
+
+                    db.ChiTietDonHang.Add(ctDH);
+                }
+                db.SaveChanges();
+                Session["GioHang"] = null;
 
                 // Thực hiện thanh toán bằng VNPAY
                 string returnUrl = "https://localhost:44359/GioHang/ReturnUrl";

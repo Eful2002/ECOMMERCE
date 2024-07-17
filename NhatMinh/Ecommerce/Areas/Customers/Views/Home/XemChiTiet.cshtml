@@ -13,10 +13,6 @@
     <div class="row">
         <div class="col-lg-5 col-md-6">
             <div class="product-details-tab">
-
-
-
-
                 <div id="img-1" class="zoomWrapper single-zoom">
                     <a href="#">
                         <img id="zoom1" src="/Assets/Customers/img/HinhAnhSanPham/@Model.AnhBia" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.AnhBia" alt="big-1" height:auto width:auto />
@@ -24,35 +20,56 @@
                 </div>
                 <div class="single-zoom-thumb">
                     <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
-                        <li>
-                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1">
-                                <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1" alt="zo-th-1" />
-                            </a>
+                        @if (Model.HinhAnh != null)
+                        {
+                            if (!string.IsNullOrEmpty(Model.HinhAnh.HinhAnh1))
+                            {
+                                <li>
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1">
+                                        <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh1" alt="zo-th-1" />
+                                    </a>
+                                </li>
+                            }
 
-                        </li>
-                        <li>
-                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2">
-                                <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2" alt="zo-th-1" />
-                            </a>
+                            if (!string.IsNullOrEmpty(Model.HinhAnh.HinhAnh2))
+                            {
+                                <li>
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2">
+                                        <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh2" alt="zo-th-1" />
+                                    </a>
+                                </li>
+                            }
 
-                        </li>
-                        <li>
-                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3">
-                                <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3" alt="zo-th-1" />
-                            </a>
+                            if (!string.IsNullOrEmpty(Model.HinhAnh.HinhAnh3))
+                            {
+                                <li>
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3">
+                                        <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh3" alt="zo-th-1" />
+                                    </a>
+                                </li>
+                            }
 
-                        </li>
-                        <li>
-                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4">
-                                <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4" alt="zo-th-1" />
-                            </a>
+                            if (!string.IsNullOrEmpty(Model.HinhAnh.HinhAnh4))
+                            {
+                                <li>
+                                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4">
+                                        <img src="/Assets/Customers/img/HinhAnhSanPham/@Model.HinhAnh.HinhAnh4" alt="zo-th-1" />
+                                    </a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="/Assets/Customers/img/default.jpg" data-zoom-image="/Assets/Customers/img/default.jpg">
+                                    <img id="zoom1" src="/Assets/Customers/img/HinhAnhSanPham/@Model.AnhBia" data-zoom-image="/Assets/Customers/img/HinhAnhSanPham/@Model.AnhBia" alt="big-1" height:auto width:auto />
 
-                        </li>
+                                </a>
+                            </li>
+
+                        }
                     </ul>
                 </div>
-
-
-
             </div>
         </div>
         <div class="col-lg-7 col-md-6">

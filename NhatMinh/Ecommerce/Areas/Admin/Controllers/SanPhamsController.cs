@@ -34,6 +34,7 @@ namespace Ecommerce.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(sanPham);
         }
 
@@ -96,6 +97,12 @@ namespace Ecommerce.Areas.Admin.Controllers
             ViewBag.MaHangSX = new SelectList(db.HangSanXuat, "MaHangSX", "TenHangSX", sanPham.MaHangSX);
             ViewBag.MaSanPham = new SelectList(db.HinhAnh, "MaSanPham", "HinhAnh1", sanPham.MaSanPham);
             ViewBag.MaLoaiSP = new SelectList(db.LoaiSanPham, "MaLoaiSP", "TenLoaiSP", sanPham.MaLoaiSP);
+
+
+            // Hiển thị chi tiết sản phẩm
+            var chiTietSanPham = db.ChiTietSP.Where(n => n.MaSanPham == sanPham.MaSanPham).OrderBy(n=>n.MauSac.TenMauSac).ToList();
+            ViewBag.ChiTietSanPham = chiTietSanPham;
+
             return View(sanPham);
         }
 

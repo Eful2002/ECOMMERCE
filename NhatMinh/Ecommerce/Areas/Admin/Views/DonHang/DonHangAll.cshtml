@@ -14,8 +14,9 @@
             <div class="card">
                 <div class="card-block">
                     <section class="example">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm đơn hàng..." style="max-width: 300px;"><br />
                         <div class="table-flip-scroll">
-                            <table class="table table-striped table-bordered table-hover flip-content">
+                            <table class="table table-striped table-bordered table-hover flip-content" id="donHangTable">
                                 <thead class="flip-header">
                                     <tr style="text-align:center">
                                         <th width="10%">Mã Đơn Hàng</th>
@@ -74,3 +75,13 @@
     </div>
 </section>
 
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#donHangTable tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

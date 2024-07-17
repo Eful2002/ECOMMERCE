@@ -14,11 +14,16 @@
             <div class="card">
                 <div class="card-block">
                     <div class="card-title-block">
-                        <a href="~/Admin/NhanVien/Create" class="btn btn-oval btn-primary">Thêm Mới Nhân Viên</a>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="form-group mb-0">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm nhân viên..." style="max-width: 300px;">
+                            </div>
+                            <a href="~/Admin/NhanVien/Create" class="btn btn-oval btn-primary">Thêm Mới Nhân Viên</a>
+                        </div>
                     </div>
                     <section class="example">
                         <div class="table-flip-scroll">
-                            <table class="table table-striped table-bordered table-hover flip-content">
+                            <table class="table table-striped table-bordered table-hover flip-content" id="nhanVienTable">
                                 <thead class="flip-header">
                                     <tr>
                                         <th>Họ Và Tên</th>
@@ -43,7 +48,6 @@
                                             {
                                                 <td><a href="~/Admin/NhanVien/KhoaTaiKhoan?sMaNhanVien=@item.TaiKhoanNV">Đang hoạt động</a></td>
                                             }
-
                                             else
                                             {
                                                 <td><a href="~/Admin/NhanVien/MoTaiKhoan?sMaNhanVien=@item.TaiKhoanNV">Tạm Khóa</a></td>
@@ -64,3 +68,14 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(function(){
+        $("#searchInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#nhanVienTable tbody tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
