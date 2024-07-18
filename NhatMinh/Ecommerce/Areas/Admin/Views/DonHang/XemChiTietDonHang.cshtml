@@ -127,7 +127,7 @@
                                         <tr>
                                             <td colspan="4"></td>
                                             <td><b>Tổng SL: @Model.ChiTietDonHang.Sum(n => n.SoLuongMua)</b></td>
-                                            <td><b>Tổng Tiền: @String.Format("{0:0,0}", Model.ChiTietDonHang.Sum(n => n.ThanhTien * n.SoLuongMua)) vnđ</b></td>
+                                            <td><b>Tổng Tiền: @String.Format("{0:0,0}", Model.TongTien) vnđ</b></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -213,7 +213,7 @@
                 }
             </td>
             <td style="border: 1px solid #000000">
-                Tổng tiền khách cần thanh toán<br /> <b>@String.Format("{0:0,0}", Model.ChiTietDonHang.Sum(n => n.ThanhTien)) vnđ</b>
+                Tổng tiền khách cần thanh toán<br /> <b>@String.Format("{0:0,0}", Model.TongTien) vnđ</b>
             </td>
         </tr>
     </table>
