@@ -158,7 +158,7 @@ namespace Ecommerce.Areas.Customers.Controllers
             List<GioHang> lstGioHang = Session["GioHang"] as List<GioHang>;
             if (lstGioHang != null)
             {
-                dTongTien = lstGioHang.Sum(n => n.ThanhTien * n.iSoLuong);
+                dTongTien = lstGioHang.Sum(n => n.ThanhTien);
             }
             return dTongTien;
         }
